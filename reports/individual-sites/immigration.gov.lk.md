@@ -11,6 +11,8 @@
 
 > This site has not been assessed. Nothing below is a finding. Sections are filled in only from rows in the [evidence register](../../evidence/evidence-register.csv).
 
+Published incidents and other public records for this institution are summarized separately in the [public-records summary](immigration.gov.lk-public-records.md). They describe past events and are not observations of the site.
+
 ## 1. Executive summary
 
 _To be written after assessment. State in three or four sentences what was looked at, the number of observations by severity, and the most useful recommendation._

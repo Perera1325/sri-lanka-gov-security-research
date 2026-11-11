@@ -1,24 +1,46 @@
-# Executive summary
+# National-level research executive summary
 
-No website has been assessed yet, so there are no findings to summarize. This file will hold the cross-site summary once Phase 2 is complete.
+Status on 2026-11-11: evidence discovery from public records is complete for a first pass. No website has been observed or assessed, and this summary reports no current vulnerability in any government website.
 
-Current counts are on the [dashboard](../DASHBOARD.md), which is generated from the repository's data files.
+## What was done
 
-## What exists today
+Ten Sri Lankan government institutions were selected, and existing publications were searched for documented incidents, official security requirements and relevant research. No request was sent to any of the ten websites. Counts are generated from the repository's data files on the [dashboard](../DASHBOARD.md); the per-institution picture is in the [national research matrix](national-research-matrix.md).
 
-- A [research plan](../research/research-plan.md), [scope](../research/scope.md) and [methodology](../research/methodology.md) limited to passive observation
-- An [inventory](../data/website-inventory.csv) of ten selected sites, none yet fully verified
-- A [checklist](../research/assessment-checklist.md) of nine passive checks
-- An empty [evidence register](../evidence/evidence-register.csv)
-- A [report file for each site](individual-sites/), all unstarted
-- A [responsible disclosure policy](../disclosure/responsible-disclosure-policy.md) and templates
+## What the public record shows
 
-## To be written after assessment
+- **Four of the ten institutions have a confirmed website incident on record.** The Department of Government Printing's site was hacked and altered in December 2024. The Ministry of Public Administration's site was defaced in 2020 and attacked again in April 2026. The Ministry of Public Security's site was reported targeted in January 2026. Sri Lanka Railways' newly launched site was attacked in June 2026. Each was acknowledged by an official body, as reported in the press.
+- **Three of those incidents date from 2026**, and no published outcome of the resulting inquiries was found.
+- **One institution suffered a back-end data loss.** Files were deleted from the National Medicines Regulatory Authority's document system in 2021, with no backup available according to press reports.
+- **Shared government infrastructure has failed twice in recent years**: a ransomware attack on the government cloud in 2023 that lost about three months of email, and a week-long cloud outage in 2025 with no evidence of a cyber cause.
+- **Two reports about immigration visa systems are unverified** and fall outside this study's scope.
+- **For four institutions no incident report was found.** This is an absence of reports, not a finding of good security.
 
-1. **Overview.** Sites assessed, dates, and method in two sentences.
-2. **Results by check.** For each of the nine checks, how many of the ten sites met it.
-3. **Observations by severity and OWASP category.** Counts taken from the register.
-4. **Common patterns.** Gaps shared by several sites, without naming a site that has an unresolved Medium-or-above item.
-5. **Recommendations.** Sector-wide hardening steps, most useful first.
-6. **Disclosure status.** Reports sent and acknowledged.
-7. **Limitations.** Summary of [research limitations](../docs/research-limitations.md).
+Details and sources for all 19 records are in the [historical incident timeline](historical-incident-timeline.md).
+
+## What the national guideline requires
+
+Sri Lanka CERT's *Website Security Guidelines for Government Organizations* (Version 1, February 2022) requires, among other things, a `gov.lk` domain, HTTPS, a current CMS version, server-side input validation, multi-factor authentication for back-end access, risk assessment of third-party components, patching, security assessment by CERT before release and at least yearly, and offline backups.
+
+All ten institutions use a `gov.lk` domain. No other requirement has been assessed. Four of the nine mapped requirements can be partly checked by browser observation once domains are verified; the other four cannot be confirmed from outside at all. See the [compliance mapping](../research/cert-compliance-mapping.md).
+
+## What is not known
+
+- The current configuration of any of the ten websites.
+- The cause and outcome of the 2026 incidents.
+- Whether any institution has had the assessments the guideline requires.
+- Whether AI coding assistants were used on any government site. No source says so, and the [literature review](../research/ai-code-security-literature-review.md) is a general academic strand only.
+
+## Strength of the evidence
+
+Every incident record currently rests on news reporting of official statements, read as excerpts. Confidence is therefore capped at Medium. No domain is fully verified: seven are preliminary and three partial. These limits are set out in [research limitations](../docs/research-limitations.md) and the [confidence and risk matrix](../docs/confidence-risk-matrix.md).
+
+## Recommended next steps
+
+1. Finish domain verification, then save dated copies of every source.
+2. Replace news reports with primary statements from Sri Lanka CERT, ICTA, the police and the institutions wherever they exist.
+3. Begin passive browser observation with one high-priority institution, following the [assessment checklist](../research/assessment-checklist.md).
+4. Consider informing Sri Lanka CERT of the study before observation begins.
+
+## To be added after assessment
+
+Results by checklist item across the ten sites, observations by severity and OWASP category, common patterns, and disclosure status. None of these exists yet.

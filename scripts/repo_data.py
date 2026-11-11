@@ -12,6 +12,11 @@ INVENTORY = ROOT / "data" / "website-inventory.csv"
 REGISTER = ROOT / "evidence" / "evidence-register.csv"
 SCORECARD = ROOT / "data" / "scorecard-template.csv"
 PLAN = ROOT / "research" / "research-plan.md"
+SELECTION = ROOT / "research" / "government-sites.md"
+RESERVE = ROOT / "data" / "reserve-sites.csv"
+INCIDENTS = ROOT / "data" / "historical-incidents.csv"
+TIMELINE = ROOT / "reports" / "historical-incident-timeline.md"
+MATRIX = ROOT / "reports" / "national-research-matrix.md"
 REPORTS = ROOT / "reports" / "individual-sites"
 TEMPLATE = REPORTS / "_TEMPLATE.md"
 DASHBOARD = ROOT / "DASHBOARD.md"
@@ -31,6 +36,29 @@ SCORECARD_COLUMNS = [
     "site_id", "observation_date", "check_id", "check_name", "result",
     "evidence_file", "notes",
 ]
+
+INCIDENT_COLUMNS = [
+    "incident_id", "site_id", "institution", "official_domain", "incident_date",
+    "publication_date", "system_affected", "summary", "confirmed_details",
+    "alleged_or_unconfirmed_details", "investigation_status", "remediation",
+    "source_url", "supporting_source_url", "source_type", "label", "confidence",
+    "notes",
+]
+# The seven research labels (docs/evidence-classification.md). CSV files use a
+# plain hyphen in "POTENTIAL RISK - NOT VERIFIED".
+RESEARCH_LABELS = [
+    "CONFIRMED HISTORICAL INCIDENT", "CONFIRMED PUBLIC SECURITY REQUIREMENT",
+    "OBSERVED CONFIGURATION", "CONFIRMED SECURITY WEAKNESS",
+    "POTENTIAL RISK - NOT VERIFIED", "NOT TESTED",
+    "NO PUBLIC EVIDENCE AVAILABLE",
+]
+INCIDENT_LABELS = [
+    "CONFIRMED HISTORICAL INCIDENT", "POTENTIAL RISK - NOT VERIFIED",
+    "NO PUBLIC EVIDENCE AVAILABLE",
+]
+SYSTEMS = ["WEBSITE", "OTHER SYSTEM", "SOCIAL MEDIA", "SHARED INFRASTRUCTURE",
+           "IMPERSONATION"]
+SHARED_SITE_ID = "NAT"
 
 VERIFICATION_STATUSES = ["VERIFIED", "PRELIMINARY", "PARTIAL", "UNVERIFIED"]
 RESEARCH_STATUSES = ["NOT STARTED", "IN PROGRESS", "ASSESSED", "REPORTED"]
@@ -62,3 +90,7 @@ def read_csv(path):
 
 def report_path(domain):
     return REPORTS / f"{domain}.md"
+
+
+def public_records_path(domain):
+    return REPORTS / f"{domain}-public-records.md"

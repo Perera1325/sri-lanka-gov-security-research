@@ -15,7 +15,11 @@ The study covers the public, unauthenticated pages of ten Sri Lankan government 
 - Admin interfaces and any path the site does not link to publicly.
 - APIs, other than noting that a public page calls one.
 - Personal or confidential data. If encountered, it is not opened, copied or stored. See [evidence guidelines](../evidence/evidence-guidelines.md).
-- Any domain not in the inventory.
+- Any domain not in the inventory, including the separate visa, booking, complaint and e-service systems run by listed institutions.
+
+## Historical incident research
+
+Published reports of past incidents are in scope as documentary research. Recording a report never involves visiting, testing or reproducing what it describes. Reported weaknesses in out-of-scope systems are logged as unverified context and are `NOT TESTED`.
 
 ## Prohibited activities
 
