@@ -19,15 +19,15 @@ Complete all of these, then change `domain_verification_status` for IRD to `VERI
 - [ ] Open the KPMG-republished IRD circular (IRD-PUB-02) and save a dated copy
 - [ ] Open the Ministry of Finance departments page (IRD-PUB-03), record where the "Department of Inland Revenue" entry links to, and save a screenshot
 - [ ] Look up `ird.gov.lk` in the LK Domain Registry's public WHOIS and save the result
-- [ ] Look up `inlandrevenue.gov.lk` (IRD-PUB-04) in the same WHOIS and note whether it is registered. Do not visit it
+- [ ] Optional, and not required for `VERIFIED`: as a historical research lead only, look up `inlandrevenue.gov.lk` (IRD-PUB-04) in the same WHOIS and note whether it is registered. Do not visit it, and do not treat it as a concern
 - [ ] Update the inventory row and run `python3 scripts/build_dashboard.py` and `python3 scripts/validate.py`
 
 ## Part B — Public-record lookups (no contact with the website)
 
 These query third-party services, not IRD's web server. Do each once and save the result page under `evidence/sources/IRD/`.
 
-- [ ] **Certificate transparency.** Open <https://crt.sh/?q=ird.gov.lk>. Record issuer, validity dates and the names on the current certificate for `www.ird.gov.lk`. List other host names seen, without visiting them
-- [ ] **DNS.** Using a public DNS lookup web tool, record the NS, A, MX and TXT records for `ird.gov.lk`, and the TXT record for `_dmarc.ird.gov.lk`. Note whether SPF and DMARC records exist and their policy values
+- [ ] **Certificate transparency.** Open <https://crt.sh/?q=ird.gov.lk>. Record issuer and validity dates of the current certificate for `www.ird.gov.lk`. Keep the saved page private. Do not visit other host names shown there and do not publish a list of them in this repository
+- [ ] **DNS.** Using a public DNS lookup web tool, look up the name-server, mail and text records for `ird.gov.lk` and its DMARC record. Keep the raw output private. Record in this repository only whether SPF and DMARC records are published and their policy values, not IP addresses or mail-server names
 - [ ] **LDFLK scorecard.** Extract the IRD row from the dataset and record its collection date and each field
 
 ## Part C — Passive browser observation guide
@@ -63,7 +63,7 @@ Each check follows the standard in the [assessment checklist](../assessment-chec
 | C03a–f | Click the main document request. Read the response headers for the six headers listed in the checklist. Copy each value exactly, or record that it is absent. | One screenshot of the full response-header list | `NOT TESTED` |
 | C04 | Open Application → Cookies (Chrome) or Storage → Cookies (Firefox). For each cookie note the name and the `Secure`, `HttpOnly` and `SameSite` columns. | Screenshot of the table with the Value column hidden or cropped | `NOT OBSERVED` if no cookies |
 | C05 | Click the padlock → certificate. Note issuer, validity dates and subject names. Compare with the Part B certificate log result. | Screenshot of the certificate summary | Protocol versions and cipher suites are `NOT TESTED` |
-| C06 | View page source (Ctrl+U). Look for a `generator` meta tag and for `Server`, `X-Powered-By` or platform-specific response headers. This tests the inference in IRD-PUB-07. | Screenshot of the marker | `NOT OBSERVED` if no explicit marker |
+| C06 | View page source (Ctrl+U). Look for a `generator` meta tag and for `Server`, `X-Powered-By` or platform-specific response headers. This is the check for the unconfirmed inference in IRD-PUB-07; without an explicit marker, record `NOT OBSERVED` and name no product. | Screenshot of the marker | `NOT OBSERVED` if no explicit marker |
 | C07 | In the Network tab filter by JS. For each library note the version only if it appears in the file name, URL or the first comment lines of the file. | Screenshot showing the version text | `NOT OBSERVED` if no versions shown |
 | C08 | In the JS filter, list hosts other than `ird.gov.lk`. In page source, check whether those `<script>` tags carry an `integrity` attribute. | Screenshot of the request list and one script tag | `NOT OBSERVED` if no third-party scripts |
 | C09 | While doing the above, note any verbose error text, internal host names or paths, version banners or developer comments on the public pages visited. | Screenshot and the page URL | See the rule below |
@@ -85,8 +85,8 @@ These cannot be determined passively. Each would need written authorization from
 | --- | --- |
 | RAMIS e-services login, session handling and access control | Authenticated system |
 | Taxpayer and TIN registration forms | Requires form submission |
-| e-Invoicing Web API (IRD-PUB-11) | API probing is prohibited |
-| Online Tax Payments Platform flow (IRD-PUB-12) | Payment system, run through banks |
+| e-Invoicing data interface (IRD-PUB-11) | Out of scope; API probing is prohibited |
+| Online tax payment flow (IRD-PUB-12) | Out of scope; payment system |
 | Server-side input validation and injection resistance | Requires crafted requests |
 | TLS protocol versions and cipher suites | Requires active handshake testing, unless an existing published result is cited |
 | Whether any advisory applies to the platform in use | Requires version confirmation and testing |
