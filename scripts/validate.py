@@ -199,6 +199,45 @@ def scorecard():
     return [f"duplicate check_id {v}" for v in sorted({v for v in ids if ids.count(v) > 1})]
 
 
+def site_scorecards():
+    """Per-site scorecards must match the template and hold no premature results."""
+    problems = []
+    folder = rd.ROOT / "data" / "scorecards"
+    if not folder.is_dir():
+        return problems
+    _, sites = rd.read_csv(rd.INVENTORY)
+    by_id = {s["site_id"]: s for s in sites}
+    _, template_rows = rd.read_csv(rd.SCORECARD)
+    template_checks = [r["check_id"] for r in template_rows]
+    allowed = {"", "YES", "NO", "PARTIAL", "NOT OBSERVED", "NOT TESTED"}
+    for path in sorted(folder.glob("*.csv")):
+        name = path.relative_to(rd.ROOT)
+        header, rows = rd.read_csv(path)
+        if header != rd.SCORECARD_COLUMNS:
+            problems.append(f"{name}: header does not match the template")
+            continue
+        if [r["check_id"] for r in rows] != template_checks:
+            problems.append(f"{name}: checks differ from the template")
+        for r in rows:
+            site = by_id.get(r["site_id"])
+            if site is None:
+                problems.append(f"{name} {r['check_id']}: unknown site_id")
+                continue
+            if r["result"] not in allowed:
+                problems.append(f"{name} {r['check_id']}: unknown result value")
+            if r["result"]:
+                if site["domain_verification_status"] != "VERIFIED":
+                    problems.append(f"{name} {r['check_id']}: result recorded "
+                                    "before the domain is VERIFIED")
+                if not valid_date(r["observation_date"]):
+                    problems.append(f"{name} {r['check_id']}: result needs an observation_date")
+                if r["result"] != "NOT TESTED" and not r["evidence_file"]:
+                    problems.append(f"{name} {r['check_id']}: result needs an evidence_file")
+            if r["evidence_file"] and not (rd.ROOT / r["evidence_file"]).exists():
+                problems.append(f"{name} {r['check_id']}: evidence file not found")
+    return problems
+
+
 def markdown_links():
     problems = []
     pattern = re.compile(r"\[[^\]]*\]\(([^)\s]+)\)")
@@ -247,6 +286,7 @@ def main():
         ("Report file for every site", site_reports),
         ("Evidence register format, IDs and values", register),
         ("Scorecard template format", scorecard),
+        ("Site scorecards hold only evidenced results", site_scorecards),
         ("Relative Markdown links resolve", markdown_links),
         ("Dashboard is current", dashboard_current),
         ("No network or scanning code", no_active_tooling),

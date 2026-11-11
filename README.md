@@ -41,6 +41,7 @@ research/
     government-sites.md           The ten sites and the verification standard
     assessment-checklist.md       Nine passive checks and their evidence standard
     technology-risk-reference.md  OWASP and AI-assisted code risk background
+    observations/                 Per-site observation plans (IRD so far)
 evidence/
     evidence-register.csv         One row per observation (currently empty)
     evidence-guidelines.md        Column rules, file naming, redaction, escalation
@@ -54,6 +55,7 @@ disclosure/
 data/
     website-inventory.csv         Sites, verification status, research status
     scorecard-template.csv        Checklist results sheet to copy per site
+    scorecards/                   One scorecard per site (IRD so far, blank)
 docs/
     research-limitations.md
     risk-classification.md
@@ -72,7 +74,7 @@ CONTRIBUTING.md
 | --- | --- | --- |
 | 0 | Research planning | Complete |
 | 1 | Research infrastructure and evidence collection | Infrastructure complete; collection not started |
-| 2 | Per-site assessment | Not started |
+| 2 | Per-site assessment | IRD: public-records review and observation plan prepared; website observation not started |
 | 3 | Cross-site analysis | Not started |
 | 4 | Responsible disclosure | Not started |
 
