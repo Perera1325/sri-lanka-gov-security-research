@@ -40,9 +40,10 @@ SCORECARD_COLUMNS = [
 INCIDENT_COLUMNS = [
     "incident_id", "site_id", "institution", "official_domain", "incident_date",
     "publication_date", "system_affected", "summary", "confirmed_details",
-    "alleged_or_unconfirmed_details", "investigation_status", "remediation",
-    "source_url", "supporting_source_url", "source_type", "label", "confidence",
-    "notes",
+    "alleged_or_unconfirmed_details", "investigation_announced",
+    "investigation_outcome", "remediation_confirmed", "source_url",
+    "supporting_source_url", "additional_source_urls", "source_type", "label",
+    "confidence", "sources_opened", "notes",
 ]
 # The seven research labels (docs/evidence-classification.md). CSV files use a
 # plain hyphen in "POTENTIAL RISK - NOT VERIFIED".

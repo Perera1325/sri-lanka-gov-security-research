@@ -161,7 +161,8 @@ def incidents():
     if header != rd.INCIDENT_COLUMNS:
         return ["header does not match INCIDENT_COLUMNS"]
     _, sites = rd.read_csv(rd.INVENTORY)
-    domain_by_id = {s["site_id"]: s["domain"] for s in sites}
+    _, reserve = rd.read_csv(rd.RESERVE)
+    domain_by_id = {s["site_id"]: s["domain"] for s in sites + reserve}
     ids = [r["incident_id"] for r in rows]
     for value in sorted({v for v in ids if ids.count(v) > 1}):
         problems.append(f"duplicate incident_id {value}")
@@ -174,11 +175,14 @@ def incidents():
             if r["official_domain"]:
                 problems.append(f"{iid}: shared entries carry no domain")
         elif r["site_id"] not in domain_by_id:
-            problems.append(f"{iid}: site_id is not in the inventory")
+            problems.append(f"{iid}: site_id is in neither inventory nor reserve")
         elif r["official_domain"] != domain_by_id[r["site_id"]]:
             problems.append(f"{iid}: official_domain does not match the inventory")
         for column in ("institution", "publication_date", "system_affected",
-                       "summary", "source_type", "label", "confidence", "notes"):
+                       "summary", "investigation_announced",
+                       "investigation_outcome", "remediation_confirmed",
+                       "source_type", "label", "confidence", "sources_opened",
+                       "notes"):
             if not r[column].strip():
                 problems.append(f"{iid}: {column} is empty")
         for column in ("incident_date", "publication_date"):
@@ -194,6 +198,15 @@ def incidents():
         for column in ("source_url", "supporting_source_url"):
             if r[column] and not r[column].startswith(("https://", "http://")):
                 problems.append(f"{iid}: {column} must be a full URL")
+        for url in r["additional_source_urls"].split(";"):
+            if url.strip() and not url.strip().startswith(("https://", "http://")):
+                problems.append(f"{iid}: additional_source_urls must hold full URLs")
+        if not (r["investigation_outcome"] in ("UNKNOWN", "NOT APPLICABLE")
+                or r["investigation_outcome"].startswith("KNOWN: ")):
+            problems.append(f"{iid}: investigation_outcome must be UNKNOWN, "
+                            "NOT APPLICABLE or 'KNOWN: ...'")
+        if r["investigation_outcome"].startswith("KNOWN: ") and not r["source_url"]:
+            problems.append(f"{iid}: a known outcome needs a source")
         if r["label"] == "NO PUBLIC EVIDENCE AVAILABLE":
             if r["confirmed_details"] and not r["source_url"]:
                 problems.append(f"{iid}: confirmed details need a source")
@@ -220,6 +233,18 @@ def generated_reports_current():
             problems.append(f"{name} is missing; run scripts/build_reports.py")
         elif path.read_text(encoding="utf-8") != text:
             problems.append(f"{name} is out of date; run scripts/build_reports.py")
+    return problems
+
+
+def no_unevidenced_weakness():
+    """A current weakness may be claimed only through the evidence register."""
+    problems = []
+    _, findings = rd.read_csv(rd.REGISTER)
+    if findings:
+        return problems
+    phrase = "Confirmed current security weaknesses: 0"
+    if phrase not in rd.MATRIX.read_text(encoding="utf-8"):
+        problems.append("matrix must report zero confirmed weaknesses while the register is empty")
     return problems
 
 
@@ -387,6 +412,7 @@ def main():
         ("Incident records: IDs, labels, dates, sources", incidents),
         ("Generated timeline and public-records summaries are current", generated_reports_current),
         ("National matrix covers all ten sites", matrix_covers_all_sites),
+        ("No finding recorded without the researcher's own evidence", no_unevidenced_weakness),
         ("Report file for every site", site_reports),
         ("Evidence register format, IDs and values", register),
         ("Scorecard template format", scorecard),

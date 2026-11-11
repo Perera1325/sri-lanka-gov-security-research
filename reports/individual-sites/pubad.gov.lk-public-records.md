@@ -17,7 +17,7 @@ This file summarizes existing publications only. No request was made to the webs
 
 ## Documented incidents and reports
 
-A historical incident does not show that a weakness exists today. Entries were read as search-result excerpts on 2026-11-11 unless a source has since been saved; each must be opened and saved before it is cited.
+A historical incident does not show that a weakness exists today. Each entry states whether its sources were opened in full or read only as search-result excerpts; none has been saved yet, and each must be saved before it is cited.
 
 2 confirmed historical incident(s) and 0 unverified report(s) are recorded for this institution.
 
@@ -29,12 +29,14 @@ A historical incident does not show that a weakness exists today. Entries were r
 - **Publication date:** 2020-05-30
 - **System concerned:** Website
 - **What was reported:** The Ministry's website homepage was defaced.
-- **Confirmed:** The Sri Lanka Air Force Cyber Security Centre said the websites of the Ministry and of the Foreign Employment Bureau were attacked and their homepages defaced.
-- **Alleged or unconfirmed:** Attribution was not established in the report read.
-- **Investigation status:** Not found.
-- **Remediation reported:** Not found.
+- **Confirmed by an official body:** The Sri Lanka Air Force Cyber Security Centre said the websites of the Ministry and of the Foreign Employment Bureau were attacked and their homepages defaced.
+- **Reported allegations and unconfirmed details:** Attribution was not established in the report read.
+- **Official investigation announced:** None found.
+- **Investigation outcome:** Not applicable
+- **Remediation confirmed:** None found.
 - **Source type:** News report of official statement
 - **Sources:** [source](https://adaderana.lk/news/64216)
+- **Sources opened in full:** No
 - **Note:** More than six years old. The ministry's name and site have changed since.
 
 ### INC-04 — Ministry of Public Administration
@@ -45,12 +47,14 @@ A historical incident does not show that a weakness exists today. Entries were r
 - **Publication date:** 2026-04-24
 - **System concerned:** Website
 - **What was reported:** A cyberattack on the Ministry's website was acknowledged after data said to come from it was offered for sale online.
-- **Confirmed:** The Minister said a complaint was lodged with the CID about an apparent cyberattack on the official website, that Sri Lanka CERT opened a separate inquiry, and that no highly sensitive data was compromised.
-- **Alleged or unconfirmed:** A listing dated 17 April 2026 on an underground forum claimed to offer data from the site. Press reports say it included officers' names, email addresses and contact numbers. The content and origin of the data have not been independently confirmed.
-- **Investigation status:** CID and Sri Lanka CERT inquiries reported open in April 2026. No outcome found.
-- **Remediation reported:** Not found.
+- **Confirmed by an official body:** Minister's statements, as reported by Ada Derana: a complaint about an apparent cyberattack on the official website was lodged with the CID through the Ministry Secretary; no highly sensitive information was compromised; only general public information appears to have been accessed by third parties.
+- **Reported allegations and unconfirmed details:** A listing dated 17 April 2026 on an underground forum claimed to offer data from the site, and press reports describe it as containing officers' names, email addresses and contact numbers. This has not been officially confirmed. That Sri Lanka CERT opened a separate inquiry is stated by the article without attribution.
+- **Official investigation announced:** CID complaint lodged and CID tasked with investigating, per the Minister (reported 24 April 2026).
+- **Investigation outcome:** Unknown
+- **Remediation confirmed:** None found.
 - **Source type:** News report of official statement
 - **Sources:** [source](https://www.adaderana.lk/news.php?nid=121675), [supporting source](https://www.tamilguardian.com/node/954664)
+- **Sources opened in full:** Primary source url opened 2026-11-11
 - **Note:** The incident is confirmed by the Minister; the description of the data is alleged.
 
 ## Shared government infrastructure
@@ -71,6 +75,6 @@ See the [compliance mapping](../../research/cert-compliance-mapping.md). No requ
 ## What remains unverified
 
 - Domain verification is not complete.
-- Investigation outcome or remediation was not found for: INC-03, INC-04.
+- The investigation outcome is unknown for: INC-04.
 - Every source above needs to be opened in full and saved, and a primary statement located where only news reporting exists.
 - The current configuration of the website is unknown.

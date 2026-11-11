@@ -43,10 +43,10 @@ Key: **Met (by name)** = shown by the domain name. **Not yet observed** = public
 | DGP | Met (by name) | Not yet observed | Not yet observed | Auth | NPV | Not yet observed | Not yet observed | Documented ² | NPV |
 | MPA | Met (by name) | Not yet observed | Not yet observed | Auth | NPV | Not yet observed | Not yet observed | NPV ³ | NPV |
 | NMRA | Met (by name) | Not yet observed | Not yet observed | Auth | NPV | Not yet observed | Not yet observed | NPV | NPV ⁴ |
+| MOE | Met (by name) | Not yet observed | Not yet observed | Auth | NPV | Not yet observed | Not yet observed | Documented ⁵ | NPV |
 | IRD | Met (by name) | Not yet observed | Not yet observed | Auth | NPV | Not yet observed | Not yet observed | NPV | NPV |
 | DIE | Met (by name) | Not yet observed | Not yet observed | Auth | NPV | Not yet observed | Not yet observed | NPV | NPV |
 | DMT | Met (by name) | Not yet observed | Not yet observed | Auth | NPV | Not yet observed | Not yet observed | NPV | NPV |
-| GIC | Met (by name) | Not yet observed | Not yet observed | Auth | NPV | Not yet observed | Not yet observed | NPV | NPV |
 | MODE | Met (by name) | Not yet observed | Not yet observed | Auth | NPV | Not yet observed | Not yet observed | NPV | NPV |
 | SLR | Met (by name) | Not yet observed | Not yet observed | Auth | NPV | Not yet observed | Not yet observed | NPV | NPV |
 
@@ -57,13 +57,19 @@ Key: **Met (by name)** = shown by the domain name. **Not yet observed** = public
 3. **MPA, R8.** After the April 2026 incident (INC-04), a Sri Lanka CERT inquiry was reported. Whether it included a website assessment is not stated.
 4. **NMRA, R9.** In the 2021 incident (INC-05), press reports said no backup of the deleted files was available. That concerned a back-end document system in 2021, not the website, and does not show the position today.
 
+5. **MOE, R7 and R8.** After the April 2024 incident (INC-20), Daily Mirror reported Sri Lanka CERT as saying it had advised the Ministry to carry out a vulnerability assessment annually and that this had not been done; the same article said, without naming a source, that security patches and updates had not been applied. These reported statements describe the website before April 2024. They are secondary reporting, CERT's own statement was not found, and they say nothing about the current website. Separately, the Ministry's 2022 performance report tabled in Parliament records preliminary work on a cyber security action plan and the establishment of a ministry incident response team ([Ministry of Education, 2023](https://www.parliament.lk/uploads/documents/paperspresented/1688705066068348.pdf)).
+
 All incident references are in the [historical incident timeline](../reports/historical-incident-timeline.md).
 
 ## What this mapping supports, and what it does not
 
 - **Supported:** all ten institutions use a `gov.lk` domain, as the guideline requires.
-- **Supported:** for three institutions, published reports show Sri Lanka CERT was involved after an incident.
+- **Supported:** for four institutions, published reports show Sri Lanka CERT was involved after an incident.
 - **Not supported:** any statement that an institution does or does not comply with R2 to R9. R2, R3, R6 and R7 await browser observation. R4 needs authorization. R5, R8 and R9 can only be confirmed by the institution or by Sri Lanka CERT.
+
+## Related guideline for web applications
+
+Sri Lanka CERT issued a separate guideline for web applications on the same date. All 32 of its requirements are mapped in [cert-web-application-guideline-mapping.md](cert-web-application-guideline-mapping.md).
 
 ## National context
 

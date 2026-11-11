@@ -17,7 +17,7 @@ This file summarizes existing publications only. No request was made to the webs
 
 ## Documented incidents and reports
 
-A historical incident does not show that a weakness exists today. Entries were read as search-result excerpts on 2026-11-11 unless a source has since been saved; each must be opened and saved before it is cited.
+A historical incident does not show that a weakness exists today. Each entry states whether its sources were opened in full or read only as search-result excerpts; none has been saved yet, and each must be saved before it is cited.
 
 2 confirmed historical incident(s) and 0 unverified report(s) are recorded for this institution.
 
@@ -29,12 +29,14 @@ A historical incident does not show that a weakness exists today. Entries were r
 - **Publication date:** 2026-06-14
 - **System concerned:** Website
 - **What was reported:** Railway authorities said the official website was hit by a cyberattack that affected its train timetable section.
-- **Confirmed:** Officials said the impact was limited to the timetable section, which was disabled as a precaution. The Department announced on 15 June 2026 that the website was back online. The Minister of Transport said the newly launched site was attacked within hours of launch.
-- **Alleged or unconfirmed:** The nature of the attack was not stated in the reports read. One report says the timetable section was still offline on 15 June.
-- **Investigation status:** Not found.
-- **Remediation reported:** Affected section disabled, then site restored, as reported.
+- **Confirmed by an official body:** Railway officials said the attack affected only the online timetable section, which was disabled as a precaution. The Minister of Transport said on social media that the newly launched site was targeted by thousands of attacks within hours of launch and stayed operational.
+- **Reported allegations and unconfirmed details:** The type of attack is not stated. The site's launch date is not given. News 1st reported the website back online on 15 June, while Daily FT reported on 17 June that work to restore the timetable section was continuing.
+- **Official investigation announced:** None found. No report read mentions an inquiry or Sri Lanka CERT.
+- **Investigation outcome:** Not applicable
+- **Remediation confirmed:** The affected section was disabled; the Department said the website was back online on 15 June 2026. Restoration of the timetable section was not confirmed in the sources read.
 - **Source type:** News report of official statement
-- **Sources:** [source](https://www.themorning.lk/articles/ff3FIO9sZ3QJYVqc8jY1), [supporting source](https://www.ft.lk/news/Railways-website-bombarded-with-cyberattacks-hours-after-launch-Minister/56-793411)
+- **Sources:** [source](https://www.themorning.lk/articles/ff3FIO9sZ3QJYVqc8jY1), [supporting source](https://www.ft.lk/news/Railways-website-bombarded-with-cyberattacks-hours-after-launch-Minister/56-793411), [further source 1](https://www.newsfirst.lk/2026/06/15/sri-lanka-railways-official-website-back-online), [further source 2](https://adaderana.lk/news/cmqdzjz5g000m356pibf4yrc3)
+- **Sources opened in full:** Supporting source url opened 2026-11-11
 - **Note:** Does not indicate the site's present state.
 
 ### INC-12 — Sri Lanka Railways
@@ -45,12 +47,14 @@ A historical incident does not show that a weakness exists today. Entries were r
 - **Publication date:** 2025
 - **System concerned:** Impersonation
 - **What was reported:** Sri Lanka Railways warned of fraudulent websites posing as its ticket-booking platform.
-- **Confirmed:** Sri Lankan diplomatic missions published the Department's notice advising visitors to use only the official reservation site.
-- **Alleged or unconfirmed:** The notice's original date was not captured.
-- **Investigation status:** Not applicable.
-- **Remediation reported:** Public advisory issued.
+- **Confirmed by an official body:** Sri Lankan diplomatic missions published the Department's notice advising visitors to use only the official reservation site.
+- **Reported allegations and unconfirmed details:** The notice's original date was not captured.
+- **Official investigation announced:** Not applicable.
+- **Investigation outcome:** Not applicable
+- **Remediation confirmed:** Public advisory issued.
 - **Source type:** Official notice via third party
 - **Sources:** [source](https://www.slhcpakistan.org/?p=116789)
+- **Sources opened in full:** No
 - **Note:** Fraud by third parties. Not a compromise of any government system.
 
 ## Shared government infrastructure
@@ -71,6 +75,5 @@ See the [compliance mapping](../../research/cert-compliance-mapping.md). No requ
 ## What remains unverified
 
 - Domain verification is not complete.
-- Investigation outcome or remediation was not found for: INC-11.
 - Every source above needs to be opened in full and saved, and a primary statement located where only news reporting exists.
 - The current configuration of the website is unknown.

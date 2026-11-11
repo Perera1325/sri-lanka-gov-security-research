@@ -17,7 +17,7 @@ This file summarizes existing publications only. No request was made to the webs
 
 ## Documented incidents and reports
 
-A historical incident does not show that a weakness exists today. Entries were read as search-result excerpts on 2026-11-11 unless a source has since been saved; each must be opened and saved before it is cited.
+A historical incident does not show that a weakness exists today. Each entry states whether its sources were opened in full or read only as search-result excerpts; none has been saved yet, and each must be saved before it is cited.
 
 1 confirmed historical incident(s) and 2 unverified report(s) are recorded for this institution.
 
@@ -29,12 +29,14 @@ A historical incident does not show that a weakness exists today. Entries were r
 - **Publication date:** 2024-04-26
 - **System concerned:** Impersonation
 - **What was reported:** The Department warned of fake websites imitating its online visa site.
-- **Confirmed:** The Department said it had received reports of people paying fake websites and advised applicants to reach the visa site through the link on immigration.gov.lk.
-- **Alleged or unconfirmed:** Nothing recorded.
-- **Investigation status:** Not applicable.
-- **Remediation reported:** Public advisory issued.
+- **Confirmed by an official body:** The Department said it had received reports of people paying fake websites and advised applicants to reach the visa site through the link on immigration.gov.lk.
+- **Reported allegations and unconfirmed details:** Nothing recorded.
+- **Official investigation announced:** Not applicable.
+- **Investigation outcome:** Not applicable
+- **Remediation confirmed:** Public advisory issued by the Department.
 - **Source type:** News report of official statement
 - **Sources:** [source](https://english.newsfirst.lk/2024/04/26/immigration-dept-warns-of-fake-e-visa-websites)
+- **Sources opened in full:** No
 - **Note:** Fraud by third parties. Not a compromise of any government system.
 
 ### INC-07 — Department of Immigration and Emigration
@@ -45,12 +47,14 @@ A historical incident does not show that a weakness exists today. Entries were r
 - **Publication date:** 2024-05
 - **System concerned:** Other system
 - **What was reported:** A traveller publicly alleged exposure of personal data connected with the visa issuance system then in use.
-- **Confirmed:** The Secretary to the Ministry of Public Security said the Ministry was concerned and had asked the Department to look into it, as reported by Daily Mirror.
-- **Alleged or unconfirmed:** The existence, cause and scope of any exposure were not confirmed in the report read. The article's exact date was not captured.
-- **Investigation status:** Department asked to look into the matter. No published finding found.
-- **Remediation reported:** Not found.
+- **Confirmed by an official body:** The Secretary to the Ministry of Public Security said the Ministry was concerned and had asked the Department to look into it, as reported by Daily Mirror.
+- **Reported allegations and unconfirmed details:** The existence, cause and scope of any exposure were not confirmed in the report read. The article's exact date was not captured.
+- **Official investigation announced:** The Ministry Secretary said the Department had been asked to look into the matter.
+- **Investigation outcome:** Unknown
+- **Remediation confirmed:** None found.
 - **Source type:** News report
 - **Sources:** [source](https://dailymirror.lk/front-page/Govt-concerned-over-data-breach-reports-in-Sri-Lankas-visa-system/238-282302)
+- **Sources opened in full:** No
 - **Note:** Concerns an outsourced visa system, not immigration.gov.lk. Out of scope.
 
 ### INC-08 — Department of Immigration and Emigration
@@ -61,12 +65,14 @@ A historical incident does not show that a weakness exists today. Entries were r
 - **Publication date:** 2026-05-03
 - **System concerned:** Other system
 - **What was reported:** An IT engineer told the Sunday Times that the ETA visa status page lacked sufficient verification before showing application details.
-- **Confirmed:** The claim was published by the Sunday Times.
-- **Alleged or unconfirmed:** The claim has not been confirmed by the Department or Sri Lanka CERT in any source read. No detail is recorded here and none was tested.
-- **Investigation status:** Not found.
-- **Remediation reported:** Not found.
+- **Confirmed by an official body:** The claim was published by the Sunday Times.
+- **Reported allegations and unconfirmed details:** The claim has not been confirmed by the Department or Sri Lanka CERT in any source read. No detail is recorded here and none was tested.
+- **Official investigation announced:** None found.
+- **Investigation outcome:** Not applicable
+- **Remediation confirmed:** None found.
 - **Source type:** News report
 - **Sources:** [source](https://www.sundaytimes.lk/260503/news/it-expert-warns-of-major-security-hole-in-dies-eta-visa-page-640868.html)
+- **Sources opened in full:** No
 - **Note:** Concerns the ETA application, which is out of scope. NOT TESTED and not to be tested without written authorization.
 
 ### INC-09 — Department of Immigration and Emigration
@@ -77,12 +83,14 @@ A historical incident does not show that a weakness exists today. Entries were r
 - **Publication date:** 2026-02-18
 - **System concerned:** Other system
 - **What was reported:** The Department announced a system problem that stopped ETA approval notices being issued.
-- **Confirmed:** The Department published a notice to applicants on 18 February 2026.
-- **Alleged or unconfirmed:** No cause was stated. Nothing links the outage to a cyber incident.
-- **Investigation status:** Not applicable.
-- **Remediation reported:** Temporary processing measures announced.
+- **Confirmed by an official body:** The Department published a notice to applicants on 18 February 2026.
+- **Reported allegations and unconfirmed details:** No cause was stated. Nothing links the outage to a cyber incident.
+- **Official investigation announced:** None.
+- **Investigation outcome:** Not applicable
+- **Remediation confirmed:** Temporary processing measures announced by the Department.
 - **Source type:** Official notice via third party
 - **Sources:** [source](https://assets.kpmg.com/content/dam/kpmgsites/xx/pdf/2026/03/fa26-048.pdf.coredownload.pdf)
+- **Sources opened in full:** No
 - **Note:** Recorded only to show that no cyber cause is evidenced. Out-of-scope system.
 
 ## Shared government infrastructure
@@ -103,6 +111,6 @@ See the [compliance mapping](../../research/cert-compliance-mapping.md). No requ
 ## What remains unverified
 
 - Domain verification is not complete.
-- Investigation outcome or remediation was not found for: INC-07, INC-08.
+- The investigation outcome is unknown for: INC-07.
 - Every source above needs to be opened in full and saved, and a primary statement located where only news reporting exists.
 - The current configuration of the website is unknown.

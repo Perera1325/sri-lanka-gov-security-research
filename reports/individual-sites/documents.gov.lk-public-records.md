@@ -17,7 +17,7 @@ This file summarizes existing publications only. No request was made to the webs
 
 ## Documented incidents and reports
 
-A historical incident does not show that a weakness exists today. Entries were read as search-result excerpts on 2026-11-11 unless a source has since been saved; each must be opened and saved before it is cited.
+A historical incident does not show that a weakness exists today. Each entry states whether its sources were opened in full or read only as search-result excerpts; none has been saved yet, and each must be saved before it is cited.
 
 1 confirmed historical incident(s) and 0 unverified report(s) are recorded for this institution.
 
@@ -29,12 +29,14 @@ A historical incident does not show that a weakness exists today. Entries were r
 - **Publication date:** 2024-12-31
 - **System concerned:** Website
 - **What was reported:** The Department's website was hacked and its content altered.
-- **Confirmed:** Sri Lanka CERT confirmed the incident and investigated. CERT said on 2 January 2025 that the site had been restored. CERT officials later told the Sunday Times that their audit of the old website found serious weaknesses and that they recommended building a new site instead of restoring it.
-- **Alleged or unconfirmed:** Reports differ on the date (night of 30 December or 31 December 2024). The site was reported as still under construction, without search, on 2 March 2025; the date of full restoration was not found.
-- **Investigation status:** Government announced investigations on 31 December 2024. No published outcome found.
-- **Remediation reported:** Old website withdrawn; documents re-published on an interim site; a replacement site was planned, as reported.
+- **Confirmed by an official body:** Sri Lanka CERT confirmed the hack and that content was altered. A named CERT engineer told the Sunday Times (5 January 2025) that CERT's audit found critical vulnerabilities in the old website and that CERT recommended replacing it. The Government Printer said certain weaknesses had been identified and that a new site would be audited by CERT before going live.
+- **Reported allegations and unconfirmed details:** Reports differ on the date (night of 30 December or 31 December 2024). The nature of the weaknesses was not published and is not recorded here.
+- **Official investigation announced:** The Cabinet spokesman announced investigations on 31 December 2024. The police spokesman said on 2 February 2025 that investigations were continuing with no arrests.
+- **Investigation outcome:** Unknown
+- **Remediation confirmed:** CERT said the site was restored on 2 January 2025. Core documents were back online by 2 February 2025 without the old features. A replacement site was to be procured; whether it has gone live was not found.
 - **Source type:** News report of official statement
-- **Sources:** [source](https://www.adaderana.lk/news.php?nid=104601), [supporting source](https://www.sundaytimes.lk/250202/news/critical-government-institution-websites-to-be-made-secure-after-last-years-spate-of-cyber-attacks-586473.html)
+- **Sources:** [source](https://www.sundaytimes.lk/250105/news/mandatory-slcert-recommendations-for-state-websites-583837.html), [supporting source](https://www.sundaytimes.lk/250202/news/critical-government-institution-websites-to-be-made-secure-after-last-years-spate-of-cyber-attacks-586473.html), [further source 1](https://www.adaderana.lk/news.php?nid=104601), [further source 2](https://adaderana.lk/news/104677/govt-printing-depts-website-restored-after-cyber-attack-)
+- **Sources opened in full:** Supporting source url opened 2026-11-11
 - **Note:** The reported audit findings concern the old website. They say nothing about the current one.
 
 ## Shared government infrastructure
@@ -55,5 +57,6 @@ See the [compliance mapping](../../research/cert-compliance-mapping.md). No requ
 ## What remains unverified
 
 - Domain verification is not complete.
+- The investigation outcome is unknown for: INC-02.
 - Every source above needs to be opened in full and saved, and a primary statement located where only news reporting exists.
 - The current configuration of the website is unknown.

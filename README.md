@@ -42,7 +42,8 @@ research/
     government-sites.md           The ten sites and the verification standard
     assessment-checklist.md       Nine passive checks and their evidence standard
     technology-risk-reference.md  OWASP and AI-assisted code risk background
-    cert-compliance-mapping.md    Sri Lanka CERT guideline requirements and how far each can be checked
+    cert-compliance-mapping.md    Sri Lanka CERT website guideline: requirements and how far each can be checked
+    cert-web-application-guideline-mapping.md  Sri Lanka CERT web application guideline: all 32 requirements
     ai-code-security-literature-review.md  Academic strand on AI-generated code
     observations/                 Per-site observation plans (IRD so far)
 evidence/
@@ -51,7 +52,7 @@ evidence/
     sources/                      Saved screenshots and page copies
 reports/
     executive-summary.md          National-level summary
-    national-research-matrix.md   Evidence, gaps and research priorities for all ten
+    national-research-matrix.md   Generated: evidence, unknowns and status for all ten
     historical-incident-timeline.md  Generated from data/historical-incidents.csv
     individual-sites/             Per site: report, generated public-records summary, template
 disclosure/
@@ -72,7 +73,7 @@ docs/
 scripts/
     validate.py                   Checks structure, CSVs, IDs, links, safety guard
     build_dashboard.py            Regenerates DASHBOARD.md from the CSV files
-    build_reports.py              Regenerates the timeline and public-records summaries
+    build_reports.py              Regenerates the timeline, national matrix and public-records summaries
     new_site_reports.py           Creates missing site reports from the template
     repo_data.py                  Shared file paths and vocabularies
 DASHBOARD.md                      Generated progress overview

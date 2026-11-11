@@ -11,7 +11,7 @@ No risk rating is assigned to any institution, because no website has been obser
 | Low | A single report, an unattributed claim, a third-party allegation, or an inference. |
 | Not applicable | Entries labelled NO PUBLIC EVIDENCE AVAILABLE. |
 
-No incident record is rated High yet. Every one rests on news reporting of official statements read as excerpts, so the ceiling is Medium until primary statements are located and saved.
+No incident record is rated High yet. Every one rests on news reporting of official statements, so the ceiling is Medium until primary statements are located and saved. For six records the main news source was opened and read on 2026-11-11; the `sources_opened` column in the incident file says which.
 
 ## What each label permits
 
@@ -32,15 +32,15 @@ No incident record is rated High yet. Every one rests on news reporting of offic
 | ID | Domain | Confirmed incidents on record | Unverified reports | Risk rating | Research priority | Reason for priority |
 | --- | --- | --- | --- | --- | --- | --- |
 | DGP | documents.gov.lk | 1 (INC-02) | 0 | Not assessed | High | A confirmed website compromise, a reported CERT audit and a planned replacement site. The current site's state is unknown. |
-| MPA | pubad.gov.lk | 2 (INC-03, INC-04) | 0 | Not assessed | High | Two confirmed website incidents six years apart, the later one in 2026 with open inquiries. |
-| MPS | pubsec.gov.lk | 1 (INC-01), plus 1 at a related agency (INC-15) | 0 | Not assessed | High | A confirmed website incident in 2026 with open inquiries. |
-| SLR | railway.gov.lk | 2 (INC-11, INC-12) | 0 | Not assessed | High | A confirmed attack on a newly launched site in 2026. |
+| MPA | pubad.gov.lk | 2 (INC-03, INC-04) | 0 | Not assessed | High | Two confirmed website incidents six years apart, the later one in 2026 with a CID investigation whose outcome is unknown. |
+| MPS | pubsec.gov.lk | 1 (INC-01), plus 1 at a related agency (INC-15) | 0 | Not assessed | High | A confirmed website incident in 2026, described by police as multiple instances of unauthorized access, with a CID investigation whose outcome is unknown. |
+| MOE | moe.gov.lk | 1 (INC-20) | 0 | Not assessed | High | A confirmed website incident in 2024 with reported Sri Lanka CERT statements on assessment and patching, and a CERT recommendation to build a new site. Whether that happened is unknown. Domain verification is incomplete. |
+| SLR | railway.gov.lk | 2 (INC-11, INC-12) | 0 | Not assessed | High | A confirmed attack on a newly launched site in 2026. No inquiry was reported. |
 | DIE | immigration.gov.lk | 1 (INC-06) | 2 (INC-07, INC-08) | Not assessed | Medium | The reports concern out-of-scope visa systems; the main site has no incident on record. |
 | NMRA | nmra.gov.lk | 1 (INC-05) | 0 | Not assessed | Medium | A serious but older back-end incident. Domain verification is incomplete. |
 | IRD | ird.gov.lk | 1 (INC-14, impersonation only) | 0 | Not assessed | Medium | No incident on record; a detailed observation plan already exists. |
 | DMT | dmt.gov.lk | 0 | 0 | Not assessed | Low | No incident on record. |
 | MODE | mode.gov.lk | 0 | 0 | Not assessed | Low | No incident on record. Domain verification is incomplete. |
-| GIC | gic.gov.lk | 0 | 0 | Not assessed | Low | No incident on record. Domain verification is incomplete. |
 
 Shared-infrastructure incidents INC-10 and INC-13 are not attributed to any single institution and are left out of this table.
 

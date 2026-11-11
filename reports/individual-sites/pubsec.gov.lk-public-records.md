@@ -17,7 +17,7 @@ This file summarizes existing publications only. No request was made to the webs
 
 ## Documented incidents and reports
 
-A historical incident does not show that a weakness exists today. Entries were read as search-result excerpts on 2026-11-11 unless a source has since been saved; each must be opened and saved before it is cited.
+A historical incident does not show that a weakness exists today. Each entry states whether its sources were opened in full or read only as search-result excerpts; none has been saved yet, and each must be saved before it is cited.
 
 2 confirmed historical incident(s) and 0 unverified report(s) are recorded for this institution.
 
@@ -28,13 +28,15 @@ A historical incident does not show that a weakness exists today. Entries were r
 - **Incident date:** 2026-01
 - **Publication date:** 2026-01-11
 - **System concerned:** Website
-- **What was reported:** Police reported that the Ministry's official website had been targeted by external parties.
-- **Confirmed:** Police statement, as reported: the CID opened an inquiry; Sri Lanka CERT and ICTA took steps to restore the website; irregularities were noticed in how the state emblem was displayed; the Ministry began an internal inquiry.
-- **Alleged or unconfirmed:** The exact date, method and extent of access were not stated in the reports read. One outlet's headline refers to repeated breaches; this was not confirmed in the text read.
-- **Investigation status:** CID inquiry and ministry-level inquiry reported open in January 2026. No outcome found.
-- **Remediation reported:** Website restored and its security reinforced by Sri Lanka CERT and ICTA, as reported.
+- **What was reported:** The Police Media Division said the Ministry's official website had been targeted by external parties.
+- **Confirmed by an official body:** Police Media Division statement, as reported by Ada Derana: there were multiple instances of unauthorized access; irregularities were then noticed in how the state emblem was displayed on the site.
+- **Reported allegations and unconfirmed details:** The dates of the access were not given. Whether any data was accessed is not stated. The method is not stated.
+- **Official investigation announced:** On the Minister's instruction the Ministry Secretary filed a complaint with the CID on 9 January 2026; the CID opened a formal investigation; the Ministry began an internal inquiry.
+- **Investigation outcome:** Unknown
+- **Remediation confirmed:** Sri Lanka CERT and ICTA took measures to restore the website, according to the police statement. Daily FT adds that its security was reinforced.
 - **Source type:** News report of official statement
 - **Sources:** [source](https://www.adaderana.lk/news/117011/cid-launches-probe-into-public-security-ministry-website-breach-), [supporting source](https://www.ft.lk/news/CID-probes-suspected-cyber-breach-of-Public-Security-Ministry-website/56-786884)
+- **Sources opened in full:** Primary source url opened 2026-11-11
 - **Note:** Does not indicate the site's present state.
 
 ### INC-15 — Sri Lanka Police (agency under the Ministry)
@@ -45,12 +47,14 @@ A historical incident does not show that a weakness exists today. Entries were r
 - **Publication date:** 2024-12-31
 - **System concerned:** Social media
 - **What was reported:** Official social media accounts of the Sri Lanka Police, including its YouTube channel, were taken over.
-- **Confirmed:** The Police spokesman confirmed the takeover and later said the Police website itself was not compromised.
-- **Alleged or unconfirmed:** Attribution to foreign actors was stated by police as a suspicion.
-- **Investigation status:** Police and Sri Lanka CERT inquiries reported. Outcome not found.
-- **Remediation reported:** Accounts recovered, the YouTube channel last, as reported.
+- **Confirmed by an official body:** The Police spokesman confirmed the takeover and later said the Police website itself was not compromised.
+- **Reported allegations and unconfirmed details:** Attribution to foreign actors was stated by police as a suspicion.
+- **Official investigation announced:** Police and Sri Lanka CERT inquiries reported.
+- **Investigation outcome:** Unknown
+- **Remediation confirmed:** Police said the accounts were recovered, the YouTube channel last.
 - **Source type:** News report of official statement
 - **Sources:** [source](https://english.newsfirst.lk/2024/12/31/sri-lanka-police-youtube-channel-targeted-by-cyber-attack), [supporting source](https://www.ft.lk/News/Police-website-was-not-hacked-SSP-Manatunga/56-771385)
+- **Sources opened in full:** No
 - **Note:** Concerns a separate agency and third-party platforms, not pubsec.gov.lk.
 
 ## Shared government infrastructure
@@ -71,6 +75,6 @@ See the [compliance mapping](../../research/cert-compliance-mapping.md). No requ
 ## What remains unverified
 
 - Domain verification is not complete.
-- Investigation outcome or remediation was not found for: INC-15.
+- The investigation outcome is unknown for: INC-01, INC-15.
 - Every source above needs to be opened in full and saved, and a primary statement located where only news reporting exists.
 - The current configuration of the website is unknown.

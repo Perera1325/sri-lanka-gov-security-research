@@ -17,7 +17,7 @@ This file summarizes existing publications only. No request was made to the webs
 
 ## Documented incidents and reports
 
-A historical incident does not show that a weakness exists today. Entries were read as search-result excerpts on 2026-11-11 unless a source has since been saved; each must be opened and saved before it is cited.
+A historical incident does not show that a weakness exists today. Each entry states whether its sources were opened in full or read only as search-result excerpts; none has been saved yet, and each must be saved before it is cited.
 
 0 confirmed historical incident(s) and 0 unverified report(s) are recorded for this institution.
 
@@ -29,12 +29,14 @@ A historical incident does not show that a weakness exists today. Entries were r
 - **Publication date:** 2026-11-11
 - **System concerned:** Website
 - **What was reported:** No report of a cyber incident affecting the Department's website was found. Reported system failures were attributed to technical causes.
-- **Confirmed:** Nothing.
-- **Alleged or unconfirmed:** Nothing recorded.
-- **Investigation status:** Not applicable.
-- **Remediation reported:** Not applicable.
+- **Confirmed by an official body:** Nothing.
+- **Reported allegations and unconfirmed details:** Nothing recorded.
+- **Official investigation announced:** Not applicable.
+- **Investigation outcome:** Not applicable
+- **Remediation confirmed:** Not applicable.
 - **Source type:** Search
 - **Sources:** None
+- **Sources opened in full:** No
 - **Note:** A search miss is not proof that no incident occurred.
 
 ## Shared government infrastructure

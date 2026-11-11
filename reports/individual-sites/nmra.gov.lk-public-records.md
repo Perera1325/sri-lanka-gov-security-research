@@ -17,7 +17,7 @@ This file summarizes existing publications only. No request was made to the webs
 
 ## Documented incidents and reports
 
-A historical incident does not show that a weakness exists today. Entries were read as search-result excerpts on 2026-11-11 unless a source has since been saved; each must be opened and saved before it is cited.
+A historical incident does not show that a weakness exists today. Each entry states whether its sources were opened in full or read only as search-result excerpts; none has been saved yet, and each must be saved before it is cited.
 
 1 confirmed historical incident(s) and 0 unverified report(s) are recorded for this institution.
 
@@ -29,12 +29,14 @@ A historical incident does not show that a weakness exists today. Entries were r
 - **Publication date:** 2021-08-08
 - **System concerned:** Other system
 - **What was reported:** Files attached to regulatory applications were deleted from the Authority's document system hosted on the Lanka Government Cloud.
-- **Confirmed:** The loss was discovered on 9 July 2021. The CID investigated with university assistance. Police said on 28 September 2021 that an engineer of the contracted IT vendor was arrested. No backup of the deleted files was available, as reported.
-- **Alleged or unconfirmed:** Motive and responsibility were disputed in court and in the press. The outcome of the prosecution and the extent of data recovery were not found.
-- **Investigation status:** CID investigation and court proceedings reported in 2021. Final outcome not found.
-- **Remediation reported:** Recovery efforts were reported from October 2021. Result not found.
+- **Confirmed by an official body:** The loss was discovered on 9 July 2021. Police said on 28 September 2021 that the CID arrested an engineer of the contracted IT vendor.
+- **Reported allegations and unconfirmed details:** Police said the deletion was intentional; the vendor had earlier described it as an error; a state counsel suggested a wider conspiracy in court. None of these was established in any source read. Press reports said no backup of the files existed.
+- **Official investigation announced:** CID investigation with university forensic assistance (2021); arrest and remand reported.
+- **Investigation outcome:** Unknown
+- **Remediation confirmed:** None confirmed. Recovery efforts were reported from October 2021; their result was not found.
 - **Source type:** News report of official statement
 - **Sources:** [source](https://www.sundaytimes.lk/210919/news/cid-continuing-probe-on-epic-lanka-ceo-and-engineers-455828.html), [supporting source](https://www.newsfirst.lk/2021/09/28/datascam-epic-lanka-software-engineer-arrested/)
+- **Sources opened in full:** Supporting source url opened 2026-11-11
 - **Note:** An insider or contractor data-deletion and backup failure in a back-end system. It was not an attack on the public website.
 
 ## Shared government infrastructure
@@ -55,6 +57,6 @@ See the [compliance mapping](../../research/cert-compliance-mapping.md). No requ
 ## What remains unverified
 
 - Domain verification is not complete.
-- Investigation outcome or remediation was not found for: INC-05.
+- The investigation outcome is unknown for: INC-05.
 - Every source above needs to be opened in full and saved, and a primary statement located where only news reporting exists.
 - The current configuration of the website is unknown.
