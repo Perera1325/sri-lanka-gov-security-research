@@ -20,11 +20,12 @@ Contributions that improve accuracy, documentation or reproducibility are welcom
 ## Before opening a pull request
 
 ```bash
+python3 scripts/build_reports.py
 python3 scripts/build_dashboard.py
 python3 scripts/validate.py
 ```
 
-Both must finish without errors. They need only Python 3.9 or later and no extra packages.
+All must finish without errors. They need only Python 3.9 or later and no extra packages.
 
 ## Institutions
 

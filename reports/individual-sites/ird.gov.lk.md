@@ -11,6 +11,8 @@
 
 > This site has not been assessed. Nothing below is a finding. Sections are filled in only from rows in the [evidence register](../../evidence/evidence-register.csv).
 
+Published incidents and other public records for this institution are summarized separately in the [public-records summary](ird.gov.lk-public-records.md). They describe past events and are not observations of the site.
+
 **Pre-assessment work (2026-11-11).** A review of existing third-party publications is in the [IRD public evidence review](ird-public-evidence-review.md). It involved no contact with the website and records no observation of it. The verification tasks and browser guide for the next stage are in the [IRD observation plan](../../research/observations/IRD-observation-plan.md). Website observation is on hold until the domain status is `VERIFIED`.
 
 ## 1. Executive summary
