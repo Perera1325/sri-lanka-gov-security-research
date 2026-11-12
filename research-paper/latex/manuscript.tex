@@ -1,0 +1,190 @@
+\documentclass[conference]{IEEEtran}
+% Requires IEEEtran.cls (obtain from IEEE/CTAN; provided by TeX Live, MiKTeX, Overleaf).
+\IEEEoverridecommandlockouts
+\usepackage{cite}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{url}
+\usepackage{hyperref}
+
+\begin{document}
+
+\title{Cybersecurity Posture of Sri Lankan Government Digital Infrastructure: A
+Ten-Institution Public-Evidence-Based Study}
+
+\author{\IEEEauthorblockN{Vinod Ravindu Perera}
+\IEEEauthorblockA{Independent Researcher\\
+Sri Lanka\\
+Repository: \url{https://github.com/Perera1325/sri-lanka-gov-security-research}}}
+
+\maketitle
+
+\begin{abstract}
+Sri Lankan government institutions have experienced a series of publicly reported website and
+infrastructure security incidents, yet little is published about how these events are followed
+up or about the state of the institutions' public web security. This paper presents an
+exploratory, public-evidence-based study of ten Sri Lankan government digital institutions.
+Using only publicly available information and passive browser access, it compiles and
+classifies a dataset of 20 historical incident records; maps the 32 requirements of the Sri
+Lanka CERT web-application security guideline against external verifiability; and reviews the
+academic literature on AI-generated-code security mapped to the OWASP Top 10, without claiming
+any studied website uses such code. Six website compromises affecting five institutions are
+confirmed from public reporting; for none of the thirteen confirmed incidents was a published
+investigation outcome found. Only seven of the 32 requirements are informable from public
+evidence, and twenty-one require authorization or internal access. No active testing was
+performed and no current exploitable weakness is claimed. The contribution is a transparent,
+reproducible method and a baseline dataset for public-accountability research.
+\end{abstract}
+
+\begin{IEEEkeywords}
+government cybersecurity, public-sector web security, Sri Lanka, security governance, incident
+analysis, OWASP, AI-generated code, responsible research
+\end{IEEEkeywords}
+
+\section{Introduction}
+Government institutions increasingly deliver services through web applications, and the security
+of that infrastructure is a public concern. In Sri Lanka, several government websites have been
+reported compromised, defaced or disrupted, and Sri Lanka CERT has issued security guidelines
+for government organizations. Independent assessment of government systems normally requires
+written authorization, because unauthorized testing is unlawful under the Computer Crimes Act
+No.~24 of 2007~\cite{slcca2007}. This leaves a gap between visible incidents and verifiable
+governance information. We address it with a constrained, public-evidence method that classifies
+every result by a fixed evidence scheme and is explicit about the boundary between what public
+evidence can and cannot establish. We contribute (i) a transparent, classified incident dataset,
+(ii) a verifiability mapping of the national web-application guideline, and (iii) an OWASP-mapped
+review of AI-generated-code risk as procurement context, with no link asserted between any site
+and AI-generated code.
+
+\section{Background and Related Work}
+Sri Lanka CERT publishes website and web-application security guidelines for government
+organizations~\cite{slcert2022website,slcert2022webapp}, providing a public yardstick; the
+Computer Crimes Act~\cite{slcca2007} constrains research to passive, public-evidence methods
+absent authorization. Where authorized testing is unavailable, open-source intelligence observes
+configuration and public record, not exploitability---a limitation treated here as a design
+constraint. A growing peer-reviewed literature examines AI-generated-code security, reporting
+frequent weakness patterns, developer over-confidence, memorized secrets, and package
+hallucination~\cite{pearce2022asleep,perry2023do,sandoval2023lost,fu2025security,vero2025baxbench,spracklen2025package,huang2024yourcode,klemmer2024using}.
+These concern software in general and are used here only as policy context.
+
+\section{Research Questions}
+\textbf{RQ1:} What cybersecurity incidents have been publicly documented across the selected
+institutions, and how should they be classified? \textbf{RQ2:} How do documented
+security-governance requirements compare with the evidence available about these institutions
+from the outside? \textbf{RQ3:} What AI-assisted-development risks are relevant to government
+digital infrastructure as policy context?
+
+\section{Methodology}
+The method is passive and public-evidence-based (Fig.~\ref{fig:method}). We define scope (ten
+\texttt{gov.lk} institutions, public pages only; no scanning, fuzzing, injection or login
+attempts); verify each official domain against independent government sources; collect public
+records; classify every result by a seven-label evidence scheme (Table~\ref{tab:evid}); map the
+CERT guideline by verifiability; and review AI-code literature mapped to OWASP, kept separate
+from the institution findings. Every count is regenerated from the data files, and structural and
+safety invariants are enforced by a validation script.
+
+\begin{figure}[t]\centering
+\includegraphics[width=0.9\columnwidth]{methodology-flowchart.pdf}
+\caption{Research methodology. Render from \texttt{figures/methodology-flowchart.md}.}
+\label{fig:method}\end{figure}
+
+\section{Institution Selection}
+Ten institutions span public security, administration, records, health regulation, education,
+taxation, immigration, transport and digital-economy policy (Table~\ref{tab:inst}). None is yet
+fully verified: seven are PRELIMINARY and three PARTIAL (Fig.~\ref{fig:verif}). Observation would
+not begin until verification is complete.
+
+\section{Historical Cyber Incident Analysis (RQ1)}
+The dataset has 20 records: 13 confirmed historical incidents, 2 unverified reports, 5 with no
+public evidence (Table~\ref{tab:incident}, Fig.~\ref{fig:incident}). By system affected, ten
+concern a website, four a backend system, three are impersonation, two are
+shared-infrastructure events, and one concerns social-media accounts. Six website compromises
+are confirmed, affecting five of the ten institutions; one is an explicit defacement and the
+rest are unauthorized access or alteration. Impersonation and shared-infrastructure events are
+reported separately and not counted as website vulnerabilities. Critically, for none of the
+thirteen confirmed incidents was a published investigation outcome found: incidents are
+reported and inquiries announced, but outcomes do not appear in the public record.
+
+\section{Sri Lanka CERT Governance Analysis (RQ2)}
+The CERT web-application guideline sets 32 requirements. Only seven are informable, even partly,
+by passive observation; four more only via an official statement; five require written
+authorization; sixteen are not publicly verifiable (Table~\ref{tab:cert},
+Fig.~\ref{fig:cert}). Twenty-one of 32 cannot be checked without authorization. The one fully
+verifiable requirement---a \texttt{gov.lk} domain---is met by all ten. Most of the national
+standard is thus externally invisible, which bounds what any public-evidence study can conclude.
+
+\section{AI-Assisted Development Security Risks (RQ3)}
+As procurement context, we map eight verified papers' reported weakness classes to the OWASP Top
+10 (Table~\ref{tab:owasp}). The literature reports frequent weaknesses in generated code,
+over-confidence, memorized credentials, and package hallucination; results on finished-code
+security are mixed, and human review that does not trust the output is the key control. Three
+OWASP categories (A05, A09, A10) are uncovered by the sources; this is stated rather than filled.
+No source links any studied website to AI-generated code, and site appearance is never treated
+as evidence of how it was built.
+
+\section{Discussion}
+Three themes emerge: incidents are real but published accountability is thin; most of the
+security standard is externally invisible; and the need for authorization to verify most
+requirements is itself an argument for authorized, coordinated assessment rather than
+unauthorized testing or silence.
+
+\section{Recommendations}
+Publish incident outcomes; publish basic non-sensitive security status; provide a lawful
+authorized-assessment channel; and require, in procurement, human security review of generated
+code, dependency verification and secrets handling.
+
+\section{Limitations and Threats to Validity}
+No technical assessment was performed; the evidence register is empty and no current weakness is
+claimed. Historical incidents are not current weaknesses. Most records rest on secondary news,
+not primary statements. No domain is fully verified. Absence of evidence is not evidence of
+absence. The ten institutions are not a representative sample. The AI-code literature concerns
+software in general, and three OWASP categories are uncovered.
+
+\section{Conclusion}
+From public evidence alone, six website compromises across five of ten institutions are
+confirmed, no published investigation outcomes are found, and only a small part of the national
+web-application standard is externally verifiable. The contribution is a transparent,
+reproducible, legally constrained method and an open dataset, with an honest account of its
+limits. The next step is authorized, coordinated assessment.
+
+\section*{Acknowledgment}
+Parts of this research infrastructure and draft were prepared with AI assistance under the
+author's direction and review. Data-classification decisions, the passive-only restriction, and
+reference verification are the author's responsibility.
+
+% Tables (port generated Markdown tables from ../tables/ here; keep numbers identical).
+\begin{table}[t]\caption{Selected institutions (see \texttt{tables/table1}).}\label{tab:inst}
+\centering\footnotesize\begin{tabular}{@{}ll@{}}\toprule Count & Value\\\midrule
+Institutions & 10\\ With a confirmed website incident & 5\\ Fully verified domains & 0\\\bottomrule
+\end{tabular}\end{table}
+
+\begin{table}[t]\caption{Incident classification (see \texttt{tables/table2}).}\label{tab:incident}
+\centering\footnotesize\begin{tabular}{@{}lr@{}}\toprule System type & Records\\\midrule
+Website (6 confirmed) & 10\\ Other/backend & 4\\ Impersonation & 3\\ Shared infrastructure & 2\\
+Social media & 1\\ \textbf{Total} & \textbf{20}\\\bottomrule\end{tabular}\end{table}
+
+\begin{table}[t]\caption{CERT guideline verifiability (see \texttt{tables/table4}).}\label{tab:cert}
+\centering\footnotesize\begin{tabular}{@{}lr@{}}\toprule Class & Requirements\\\midrule
+Passive observation & 7\\ Official statement only & 4\\ Written authorization & 5\\
+Not publicly verifiable & 16\\ \textbf{Total} & \textbf{32}\\\bottomrule\end{tabular}\end{table}
+
+\begin{table}[t]\caption{Evidence labels (see \texttt{tables/table6}).}\label{tab:evid}
+\centering\footnotesize\begin{tabular}{@{}p{0.9\columnwidth}@{}}\toprule
+Seven labels separate confirmed incidents, requirements, observed configuration, confirmed
+weakness, unverified risk, not-tested, and no-evidence. Labels for the researcher's own
+observations are unused (no site observed).\\\bottomrule\end{tabular}\end{table}
+
+\begin{table}[t]\caption{AI-code to OWASP (see \texttt{tables/table5}).}\label{tab:owasp}
+\centering\footnotesize\begin{tabular}{@{}lr@{}}\toprule OWASP 2021 & Covered?\\\midrule
+A01--A04, A06--A08 & Yes\\ A05, A09, A10 & Not covered by sources\\\bottomrule\end{tabular}\end{table}
+
+\begin{figure}[t]\centering\includegraphics[width=0.95\columnwidth]{fig1-incident-classification.pdf}
+\caption{Incident records by system type (n=20).}\label{fig:incident}\end{figure}
+\begin{figure}[t]\centering\includegraphics[width=0.8\columnwidth]{fig2-domain-verification.pdf}
+\caption{Domain verification status (n=10).}\label{fig:verif}\end{figure}
+\begin{figure}[t]\centering\includegraphics[width=0.95\columnwidth]{fig3-cert-verifiability.pdf}
+\caption{External verifiability of 32 CERT requirements.}\label{fig:cert}\end{figure}
+
+\bibliographystyle{IEEEtran}
+\bibliography{references}
+
+\end{document}
