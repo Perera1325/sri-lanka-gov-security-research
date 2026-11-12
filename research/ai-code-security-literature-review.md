@@ -4,7 +4,7 @@ The research literature shows that code produced by AI assistants often contains
 
 This review concerns software development in general. Section 8 states what it does and does not say about Sri Lankan government websites: no source found for this project says that any of them was built with AI-generated code.
 
-Status: second pass, 2026-11-11. Eight papers are included. For each, the stated findings were checked in this session against the paper's abstract, its publisher or conference page, or the paper text. Full texts were not read end to end, and figures should be re-checked against the published version before being quoted.
+Status: third pass, 2026-11-12: title, authors, year, venue and DOI or proceedings page confirmed for all eight papers. Second pass, 2026-11-11. Eight papers are included. For each, the stated findings were checked in this session against the paper's abstract, its publisher or conference page, or the paper text. Full texts were not read end to end, and figures should be re-checked against the published version before being quoted.
 
 ## 1. Sources and how they were checked
 
@@ -44,7 +44,7 @@ No checked source isolates authentication code as its subject. The nearest evide
 
 - P4 lists code injection and cross-site scripting among the significant weakness categories in generated code found in real projects ([Fu et al., 2025](https://arxiv.org/abs/2310.02059)). Both arise when input is used without adequate validation or encoding.
 - P1 examined how the wording of a prompt changed the likelihood of SQL-injection-prone output ([Pearce et al., 2022](https://arxiv.org/abs/2108.09293)).
-- P2 found significant differences against the assisted group on a SQL injection task ([Perry et al., 2023](https://arxiv.org/abs/2211.03622)).
+- P2 included a SQL injection task among its five tasks; across the study, assisted participants wrote insecure solutions more often on four of the five tasks ([Perry et al., 2023](https://arxiv.org/abs/2211.03622)). The per-task result for the SQL task should be checked in the full paper before it is quoted on its own.
 
 **Limit.** None of these studies measures whether validation was placed on the server as well as the client, which is what Sri Lanka CERT's guidelines require.
 
@@ -68,7 +68,7 @@ The evidence on human oversight points both ways, and both results should be rep
 
 - **Oversight can be sufficient.** P3 studied 58 student programmers writing low-level C code and found that the assisted group produced critical security bugs at a rate no more than 10 percent higher than the control group. The authors conclude that, in their setting, assistance did not introduce new security risks ([Sandoval et al., 2023](https://www.usenix.org/conference/usenixsecurity23/presentation/sandoval)).
 - **Oversight can fail.** P2, with different tasks and languages, found assisted participants wrote less secure code. Participants who trusted the assistant less and worked more on their prompts produced fewer flaws ([Perry et al., 2023](https://arxiv.org/abs/2211.03622)).
-- **What professionals report doing.** P8 interviewed 27 software professionals and reviewed 190 forum posts. Despite security and quality concerns, participants used assistants widely, including for security-critical tasks; their general mistrust led them to check suggestions in much the same way as human-written code ([Klemmer et al., 2024](https://arxiv.org/abs/2405.06371)).
+- **What professionals report doing.** P8 interviewed 27 software professionals and reviewed 190 relevant Reddit posts and comments. Despite security and quality concerns, participants used assistants widely, including for security-critical tasks; their general mistrust led them to check suggestions in much the same way as human-written code ([Klemmer et al., 2024](https://arxiv.org/abs/2405.06371)).
 
 **Reading these together.** P2 and P3 differ in language, task and participants, so they do not contradict each other; they show that the outcome depends on the setting and on how critically the developer works. The consistent message is that review by a person who does not simply trust the output is the control that matters.
 
@@ -121,15 +121,15 @@ These follow from the literature and from Sri Lanka CERT's guidelines. They are 
 
 ## References
 
-Fu, Y., Liang, P., Tahir, A., Li, Z., Shahin, M., Yu, J., & Chen, J. (2025). Security weaknesses of Copilot-generated code in GitHub projects: An empirical study. *ACM Transactions on Software Engineering and Methodology*. <https://arxiv.org/abs/2310.02059>
+Fu, Y., Liang, P., Tahir, A., Li, Z., Shahin, M., Yu, J., & Chen, J. (2025). Security weaknesses of Copilot-generated code in GitHub projects: An empirical study. *ACM Transactions on Software Engineering and Methodology*. https://doi.org/10.1145/3716848 (preprint: <https://arxiv.org/abs/2310.02059>)
 
-Huang, Y., Li, Y., Wu, W., Zhang, J., & Lyu, M. R. (2024). Your code secret belongs to me: Neural code completion tools can memorize hard-coded credentials. *Proceedings of the ACM on Software Engineering, 1*(FSE), Article 111. <https://arxiv.org/abs/2309.07639>
+Huang, Y., Li, Y., Wu, W., Zhang, J., & Lyu, M. R. (2024). Your code secret belongs to me: Neural code completion tools can memorize hard-coded credentials. *Proceedings of the ACM on Software Engineering, 1*(FSE), Article 111. https://doi.org/10.1145/3660818
 
-Klemmer, J. H., Horstmann, S. A., Patnaik, N., Ludden, C., Burton, C., Jr., Powers, C., Massacci, F., Rahman, A., Votipka, D., Lipford, H. R., Rashid, A., Naiakshina, A., & Fahl, S. (2024). Using AI assistants in software development: A qualitative study on security practices and concerns. *Proceedings of the 2024 ACM SIGSAC Conference on Computer and Communications Security*, 2726–2740. <https://arxiv.org/abs/2405.06371>
+Klemmer, J. H., Horstmann, S. A., Patnaik, N., Ludden, C., Burton, C., Jr., Powers, C., Massacci, F., Rahman, A., Votipka, D., Lipford, H. R., Rashid, A., Naiakshina, A., & Fahl, S. (2024). Using AI assistants in software development: A qualitative study on security practices and concerns. *Proceedings of the 2024 ACM SIGSAC Conference on Computer and Communications Security*, 2726–2740. https://doi.org/10.1145/3658644.3690283
 
-Pearce, H., Ahmad, B., Tan, B., Dolan-Gavitt, B., & Karri, R. (2022). Asleep at the keyboard? Assessing the security of GitHub Copilot's code contributions. *IEEE Symposium on Security and Privacy*. <https://arxiv.org/abs/2108.09293>
+Pearce, H., Ahmad, B., Tan, B., Dolan-Gavitt, B., & Karri, R. (2022). Asleep at the keyboard? Assessing the security of GitHub Copilot's code contributions. *2022 IEEE Symposium on Security and Privacy (SP)*, 754–768. https://doi.org/10.1109/SP46214.2022.9833571
 
-Perry, N., Srivastava, M., Kumar, D., & Boneh, D. (2023). Do users write more insecure code with AI assistants? *Proceedings of the 2023 ACM SIGSAC Conference on Computer and Communications Security*. <https://arxiv.org/abs/2211.03622>
+Perry, N., Srivastava, M., Kumar, D., & Boneh, D. (2023). Do users write more insecure code with AI assistants? *Proceedings of the 2023 ACM SIGSAC Conference on Computer and Communications Security*, 2785–2799. https://doi.org/10.1145/3576915.3623157
 
 Sandoval, G., Pearce, H., Nys, T., Karri, R., Garg, S., & Dolan-Gavitt, B. (2023). Lost at C: A user study on the security implications of large language model code assistants. *32nd USENIX Security Symposium*, 2205–2222. <https://www.usenix.org/conference/usenixsecurity23/presentation/sandoval>
 
@@ -137,4 +137,4 @@ Spracklen, J., Wijewickrama, R., Sakib, A. H. M. N., Maiti, A., Viswanath, B., &
 
 Sri Lanka CERT. (2022). *Web application security guidelines for government organizations* (Version 1). <https://cert.gov.lk/wp-content/uploads/2023/07/Web-Application-Security-Guidelines-for-Government-Organizations_2022.pdf>
 
-Vero, M., Mündler, N., Chibotaru, V., Raychev, V., Baader, M., Jovanović, N., He, J., & Vechev, M. (2025). BaxBench: Can LLMs generate correct and secure backends? *Proceedings of the 42nd International Conference on Machine Learning*. <https://arxiv.org/abs/2502.11844>
+Vero, M., Mündler, N., Chibotaru, V., Raychev, V., Baader, M., Jovanović, N., He, J., & Vechev, M. (2025). BaxBench: Can LLMs generate correct and secure backends? *Proceedings of the 42nd International Conference on Machine Learning*, PMLR 267, 61344–61390. <https://proceedings.mlr.press/v267/vero25a.html>
