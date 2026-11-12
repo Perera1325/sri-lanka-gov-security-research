@@ -1,0 +1,6 @@
+site_id,institution,domain,sector,official_source_reference,verification_checks_passed,domain_verification_status,research_status,last_observation_date,notes
+DRP,Department for Registration of Persons,drp.gov.lk,Public administration,https://mode.gov.lk/docs/institutions/DRP_old,2,PRELIMINARY,NOT STARTED,,Moved to reserve on 2026-11-11 when the selection changed; Phase 0 verification retained
+RGD,Registrar General's Department,rgd.gov.lk,Public records,https://srilanka-botschaft.de/important-government-links/,2,PRELIMINARY,NOT STARTED,,Moved to reserve on 2026-11-11 when the selection changed; Phase 0 verification retained
+PARL,Parliament of Sri Lanka,parliament.lk,Parliament and legislative services,https://srilanka-botschaft.de/important-government-links/,1,PARTIAL,NOT STARTED,,Moved to reserve on 2026-11-11; not under gov.lk and needs registry WHOIS lookup
+ICTA,ICT Agency of Sri Lanka,icta.lk,Government technology institution,https://www.icta.lk/projects/digital-government/gov-lk-website-platform,1,PARTIAL,NOT STARTED,,Moved to reserve on 2026-11-11; self-sourced only
+GIC,Government Information Center,gic.gov.lk,Government information services,https://domains.lk/lk-domain-naming-structure/,1,PARTIAL,NOT STARTED,,Moved to reserve on 2026-11-11 to make room for the Ministry of Education: no incident on record and domain verification incomplete

@@ -5,7 +5,7 @@
 | Site ID | GIC |
 | Domain | gic.gov.lk |
 | Sector | Government information services |
-| Report status | Not started |
+| Report status | Reserve site (moved from the selection on 2026-11-11); not started |
 | Observation dates | None yet |
 | Evidence register rows | None yet |
 

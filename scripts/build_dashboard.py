@@ -18,6 +18,10 @@ import repo_data as rd
 def render():
     _, sites = rd.read_csv(rd.INVENTORY)
     _, findings = rd.read_csv(rd.REGISTER)
+    _, incidents = rd.read_csv(rd.INCIDENTS)
+    inc_label = Counter(i["label"] for i in incidents)
+    inc_site = Counter(i["site_id"] for i in incidents
+                       if i["label"] == "CONFIRMED HISTORICAL INCIDENT")
 
     verification = Counter(s["domain_verification_status"] for s in sites)
     research = Counter(s["research_status"] for s in sites)
@@ -49,6 +53,15 @@ def render():
     add(f"| NOT TESTED items logged | {by_status['NOT TESTED']} |")
     add(f"| Informational items | {by_status['INFORMATIONAL']} |")
     add(f"| Evidence register rows | {len(findings)} |")
+    add(f"| Documented historical incidents (public records) | {inc_label['CONFIRMED HISTORICAL INCIDENT']} |")
+    add(f"| Unverified public reports | {inc_label['POTENTIAL RISK - NOT VERIFIED']} |")
+    add("")
+    add("Incident counts come from "
+        "[`data/historical-incidents.csv`](data/historical-incidents.csv) and include "
+        f"{inc_site[rd.SHARED_SITE_ID]} shared-infrastructure incidents. They describe "
+        "past events, not the current state of any site. See the "
+        "[timeline](reports/historical-incident-timeline.md) and the "
+        "[national research matrix](reports/national-research-matrix.md).")
     add("")
     add("\"Verified\" means both verification checks pass and dated copies of "
         "the sources are saved. See "
@@ -70,14 +83,15 @@ def render():
     add("")
     add("## Sites")
     add("")
-    add("| ID | Institution | Domain | Verification | Research | Last observed | Register rows | Report |")
-    add("| --- | --- | --- | --- | --- | --- | --- | --- |")
+    add("| ID | Institution | Domain | Verification | Research | Last observed | Register rows | Past incidents | Reports |")
+    add("| --- | --- | --- | --- | --- | --- | --- | --- | --- |")
     for s in sites:
         last = s["last_observation_date"] or "–"
-        link = f"[report](reports/individual-sites/{s['domain']}.md)"
+        link = (f"[site](reports/individual-sites/{s['domain']}.md), "
+                f"[public records](reports/individual-sites/{s['domain']}-public-records.md)")
         add(f"| {s['site_id']} | {s['institution']} | {s['domain']} | "
             f"{s['domain_verification_status']} | {s['research_status']} | "
-            f"{last} | {per_site[s['domain']]} | {link} |")
+            f"{last} | {per_site[s['domain']]} | {inc_site[s['site_id']]} | {link} |")
     add("")
     add("## Register by severity")
     add("")
@@ -116,7 +130,7 @@ def render():
     if not suspected:
         add("- None")
     add("")
-    add(f"**Open items in the research plan ({len(open_plan_tasks)})**")
+    add(f"**Open items in the Phase 0 research plan ({len(open_plan_tasks)}; some concern reserve sites)**")
     add("")
     for task in open_plan_tasks:
         add(f"- {task}")

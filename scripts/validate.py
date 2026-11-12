@@ -17,6 +17,7 @@ from datetime import date
 
 import repo_data as rd
 import build_dashboard
+import build_reports
 
 REQUIRED_FILES = [
     "README.md", "CONTRIBUTING.md", "DASHBOARD.md",
@@ -32,6 +33,12 @@ REQUIRED_FILES = [
     "disclosure/templates/follow-up-template.md",
     "data/website-inventory.csv", "data/scorecard-template.csv",
     "docs/research-limitations.md", "docs/risk-classification.md",
+    "docs/evidence-classification.md", "docs/confidence-risk-matrix.md",
+    "data/reserve-sites.csv", "data/historical-incidents.csv",
+    "research/cert-compliance-mapping.md",
+    "research/ai-code-security-literature-review.md",
+    "reports/national-research-matrix.md",
+    "reports/historical-incident-timeline.md",
 ]
 
 # Modules that would let a script contact a website or run other programs.
@@ -114,21 +121,138 @@ def inventory():
     return problems
 
 
-def plan_match():
-    """The inventory must list exactly the ten domains in the research plan."""
+def selection_match():
+    """The inventory must list exactly the sites in research/government-sites.md,
+    and every Phase 0 plan site must still be tracked (inventory or reserve)."""
     _, rows = rd.read_csv(rd.INVENTORY)
+    header, reserve = rd.read_csv(rd.RESERVE)
+    problems = []
+    if header != rd.INVENTORY_COLUMNS:
+        problems.append("reserve-sites.csv header does not match the inventory")
+    inv = {r["domain"]: r["site_id"] for r in rows}
+    text = rd.SELECTION.read_text(encoding="utf-8")
+    section = text.split("## Selected sites", 1)[-1].split("\n## ", 1)[0]
+    selected = dict((d, i) for i, d in re.findall(
+        r"^\| ([A-Z]{2,6}) \| [^|]+ \| ([a-z0-9.-]+\.lk) \|", section, flags=re.M))
+    if len(selected) != 10:
+        problems.append(f"expected 10 selected sites in government-sites.md, found {len(selected)}")
+    for d in sorted(set(selected) - set(inv)):
+        problems.append(f"{d} is selected but not in the inventory")
+    for d in sorted(set(inv) - set(selected)):
+        problems.append(f"{d} is in the inventory but not selected")
+    for d, i in selected.items():
+        if d in inv and inv[d] != i:
+            problems.append(f"{d}: site ID differs between selection and inventory")
     plan = rd.PLAN.read_text(encoding="utf-8")
     plan_domains = re.findall(
         r"^\| \d+ \| [^|]+ \| ([a-z0-9.-]+\.lk) \|", plan, flags=re.M)
-    inv_domains = [r["domain"] for r in rows]
-    problems = []
-    if len(plan_domains) != 10:
-        problems.append(f"could not read 10 domains from the plan (found {len(plan_domains)})")
-    for d in sorted(set(plan_domains) - set(inv_domains)):
-        problems.append(f"{d} is in the plan but not the inventory")
-    for d in sorted(set(inv_domains) - set(plan_domains)):
-        problems.append(f"{d} is in the inventory but not the plan")
+    tracked = set(inv) | {r["domain"] for r in reserve}
+    for d in sorted(set(plan_domains) - tracked):
+        problems.append(f"{d} from the Phase 0 plan is in neither inventory nor reserve")
+    both = set(inv) & {r["domain"] for r in reserve}
+    for d in sorted(both):
+        problems.append(f"{d} is in both the inventory and the reserve")
     return problems
+
+
+def incidents():
+    problems = []
+    header, rows = rd.read_csv(rd.INCIDENTS)
+    if header != rd.INCIDENT_COLUMNS:
+        return ["header does not match INCIDENT_COLUMNS"]
+    _, sites = rd.read_csv(rd.INVENTORY)
+    _, reserve = rd.read_csv(rd.RESERVE)
+    domain_by_id = {s["site_id"]: s["domain"] for s in sites + reserve}
+    ids = [r["incident_id"] for r in rows]
+    for value in sorted({v for v in ids if ids.count(v) > 1}):
+        problems.append(f"duplicate incident_id {value}")
+    partial = re.compile(r"\d{4}(-\d{2}(-\d{2})?)?")
+    for r in rows:
+        iid = r["incident_id"] or "(no id)"
+        if not re.fullmatch(r"INC-\d{2}", r["incident_id"]):
+            problems.append(f"{iid}: incident_id must look like INC-01")
+        if r["site_id"] == rd.SHARED_SITE_ID:
+            if r["official_domain"]:
+                problems.append(f"{iid}: shared entries carry no domain")
+        elif r["site_id"] not in domain_by_id:
+            problems.append(f"{iid}: site_id is in neither inventory nor reserve")
+        elif r["official_domain"] != domain_by_id[r["site_id"]]:
+            problems.append(f"{iid}: official_domain does not match the inventory")
+        for column in ("institution", "publication_date", "system_affected",
+                       "summary", "investigation_announced",
+                       "investigation_outcome", "remediation_confirmed",
+                       "source_type", "label", "confidence", "sources_opened",
+                       "notes"):
+            if not r[column].strip():
+                problems.append(f"{iid}: {column} is empty")
+        for column in ("incident_date", "publication_date"):
+            value = r[column]
+            if value and not partial.fullmatch(value):
+                problems.append(f"{iid}: {column} must be YYYY, YYYY-MM or YYYY-MM-DD")
+            elif len(value) == 10 and not valid_date(value):
+                problems.append(f"{iid}: {column} is not a real date")
+        if r["system_affected"] not in rd.SYSTEMS:
+            problems.append(f"{iid}: unknown system_affected")
+        if r["label"] not in rd.INCIDENT_LABELS:
+            problems.append(f"{iid}: label not allowed for incident records")
+        for column in ("source_url", "supporting_source_url"):
+            if r[column] and not r[column].startswith(("https://", "http://")):
+                problems.append(f"{iid}: {column} must be a full URL")
+        for url in r["additional_source_urls"].split(";"):
+            if url.strip() and not url.strip().startswith(("https://", "http://")):
+                problems.append(f"{iid}: additional_source_urls must hold full URLs")
+        if not (r["investigation_outcome"] in ("UNKNOWN", "NOT APPLICABLE")
+                or r["investigation_outcome"].startswith("KNOWN: ")):
+            problems.append(f"{iid}: investigation_outcome must be UNKNOWN, "
+                            "NOT APPLICABLE or 'KNOWN: ...'")
+        if r["investigation_outcome"].startswith("KNOWN: ") and not r["source_url"]:
+            problems.append(f"{iid}: a known outcome needs a source")
+        if r["label"] == "NO PUBLIC EVIDENCE AVAILABLE":
+            if r["confirmed_details"] and not r["source_url"]:
+                problems.append(f"{iid}: confirmed details need a source")
+        else:
+            if not r["source_url"]:
+                problems.append(f"{iid}: a source_url is required")
+            if not r["incident_date"]:
+                problems.append(f"{iid}: an incident_date is required")
+            if r["confidence"] not in rd.CONFIDENCES:
+                problems.append(f"{iid}: unknown confidence")
+        if r["label"] == "CONFIRMED HISTORICAL INCIDENT" and not r["confirmed_details"]:
+            problems.append(f"{iid}: a confirmed incident needs confirmed_details")
+        if (r["label"] == "POTENTIAL RISK - NOT VERIFIED"
+                and r["confidence"] == "High"):
+            problems.append(f"{iid}: an unverified report cannot have High confidence")
+    return problems
+
+
+def generated_reports_current():
+    problems = []
+    for path, text in build_reports.outputs().items():
+        name = path.relative_to(rd.ROOT)
+        if not path.is_file():
+            problems.append(f"{name} is missing; run scripts/build_reports.py")
+        elif path.read_text(encoding="utf-8") != text:
+            problems.append(f"{name} is out of date; run scripts/build_reports.py")
+    return problems
+
+
+def no_unevidenced_weakness():
+    """A current weakness may be claimed only through the evidence register."""
+    problems = []
+    _, findings = rd.read_csv(rd.REGISTER)
+    if findings:
+        return problems
+    phrase = "Confirmed current security weaknesses: 0"
+    if phrase not in rd.MATRIX.read_text(encoding="utf-8"):
+        problems.append("matrix must report zero confirmed weaknesses while the register is empty")
+    return problems
+
+
+def matrix_covers_all_sites():
+    _, rows = rd.read_csv(rd.INVENTORY)
+    text = rd.MATRIX.read_text(encoding="utf-8")
+    return [f"{r['domain']} is missing from the national research matrix"
+            for r in rows if r["domain"] not in text]
 
 
 def site_reports():
@@ -199,6 +323,45 @@ def scorecard():
     return [f"duplicate check_id {v}" for v in sorted({v for v in ids if ids.count(v) > 1})]
 
 
+def site_scorecards():
+    """Per-site scorecards must match the template and hold no premature results."""
+    problems = []
+    folder = rd.ROOT / "data" / "scorecards"
+    if not folder.is_dir():
+        return problems
+    _, sites = rd.read_csv(rd.INVENTORY)
+    by_id = {s["site_id"]: s for s in sites}
+    _, template_rows = rd.read_csv(rd.SCORECARD)
+    template_checks = [r["check_id"] for r in template_rows]
+    allowed = {"", "YES", "NO", "PARTIAL", "NOT OBSERVED", "NOT TESTED"}
+    for path in sorted(folder.glob("*.csv")):
+        name = path.relative_to(rd.ROOT)
+        header, rows = rd.read_csv(path)
+        if header != rd.SCORECARD_COLUMNS:
+            problems.append(f"{name}: header does not match the template")
+            continue
+        if [r["check_id"] for r in rows] != template_checks:
+            problems.append(f"{name}: checks differ from the template")
+        for r in rows:
+            site = by_id.get(r["site_id"])
+            if site is None:
+                problems.append(f"{name} {r['check_id']}: unknown site_id")
+                continue
+            if r["result"] not in allowed:
+                problems.append(f"{name} {r['check_id']}: unknown result value")
+            if r["result"]:
+                if site["domain_verification_status"] != "VERIFIED":
+                    problems.append(f"{name} {r['check_id']}: result recorded "
+                                    "before the domain is VERIFIED")
+                if not valid_date(r["observation_date"]):
+                    problems.append(f"{name} {r['check_id']}: result needs an observation_date")
+                if r["result"] != "NOT TESTED" and not r["evidence_file"]:
+                    problems.append(f"{name} {r['check_id']}: result needs an evidence_file")
+            if r["evidence_file"] and not (rd.ROOT / r["evidence_file"]).exists():
+                problems.append(f"{name} {r['check_id']}: evidence file not found")
+    return problems
+
+
 def markdown_links():
     problems = []
     pattern = re.compile(r"\[[^\]]*\]\(([^)\s]+)\)")
@@ -207,6 +370,8 @@ def markdown_links():
             continue
         for target in pattern.findall(path.read_text(encoding="utf-8")):
             if target.startswith(("http://", "https://", "mailto:", "#")):
+                continue
+            if "{{" in target:  # template placeholder, filled per site
                 continue
             local = target.split("#")[0]
             if local and not (path.parent / local).exists():
@@ -243,10 +408,15 @@ def main():
     check("Required files present", required_files())
     for name, function in [
         ("Inventory format and values", inventory),
-        ("Inventory matches the research plan", plan_match),
+        ("Inventory matches the current selection; plan sites tracked", selection_match),
+        ("Incident records: IDs, labels, dates, sources", incidents),
+        ("Generated timeline and public-records summaries are current", generated_reports_current),
+        ("National matrix covers all ten sites", matrix_covers_all_sites),
+        ("No finding recorded without the researcher's own evidence", no_unevidenced_weakness),
         ("Report file for every site", site_reports),
         ("Evidence register format, IDs and values", register),
         ("Scorecard template format", scorecard),
+        ("Site scorecards hold only evidenced results", site_scorecards),
         ("Relative Markdown links resolve", markdown_links),
         ("Dashboard is current", dashboard_current),
         ("No network or scanning code", no_active_tooling),

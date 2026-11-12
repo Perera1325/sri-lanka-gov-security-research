@@ -12,7 +12,8 @@ An activity is allowed only if an ordinary member of the public could do the sam
 | --- | --- | --- | --- |
 | 0 | Research planning | [research-plan.md](research-plan.md) | Complete |
 | 1 | Research infrastructure and evidence collection | This repository structure, inventory, register, checklist, templates | Infrastructure complete; collection not started |
-| 2 | Per-site assessment | Completed reports in [`reports/individual-sites/`](../reports/individual-sites/) | Not started |
+| 2a | Evidence discovery from public records | [National research matrix](../reports/national-research-matrix.md), [incident timeline](../reports/historical-incident-timeline.md), [CERT compliance mapping](cert-compliance-mapping.md), [literature review](ai-code-security-literature-review.md) | First pass complete |
+| 2b | Per-site browser assessment | Completed reports in [`reports/individual-sites/`](../reports/individual-sites/) | Not started |
 | 3 | Cross-site analysis | [`reports/executive-summary.md`](../reports/executive-summary.md) | Not started |
 | 4 | Responsible disclosure | Reports sent through official channels | Not started |
 
@@ -41,9 +42,18 @@ An activity is allowed only if an ordinary member of the public could do the sam
 ```bash
 python3 scripts/validate.py          # structure, CSV format, IDs, links, safety guard
 python3 scripts/build_dashboard.py   # regenerates DASHBOARD.md from the CSV files
+python3 scripts/build_reports.py     # regenerates the incident timeline and public-records summaries
 ```
 
-Both scripts read local files only and make no network connections.
+All scripts read local files only and make no network connections.
+
+## Recording a historical incident
+
+1. Add one row to [`data/historical-incidents.csv`](../data/historical-incidents.csv) with the next `INC-nn` ID.
+2. Put what an official body confirmed in `confirmed_details` and everything else in `alleged_or_unconfirmed_details`.
+3. Choose the label from [evidence classification](../docs/evidence-classification.md) and the confidence from the [confidence and risk matrix](../docs/confidence-risk-matrix.md).
+4. Record no exploit detail, personal data or internal system detail, even if a source publishes it.
+5. Run `build_reports.py`, `build_dashboard.py` and `validate.py`.
 
 ## OWASP reference version
 

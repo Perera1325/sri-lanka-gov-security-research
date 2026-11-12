@@ -1,17 +1,18 @@
 # Sri Lanka Government Web Security Posture Research
 
-An independent, passive-only study of the publicly observable security configuration of ten Sri Lankan government websites, carried out so that institutions can be told privately about anything worth fixing.
+An independent, passive-only study of ten Sri Lankan government websites: what the public record says about past incidents, what the national guideline requires, and what an ordinary visitor's browser shows, so that institutions can be told privately about anything worth fixing.
 
-**Status:** Phase 1 infrastructure is in place. No website has been assessed and the evidence register is empty. Live counts are on the [research dashboard](DASHBOARD.md).
+**Status:** Evidence discovery from public records is done for a first pass. No website has been observed or assessed and the evidence register is empty. Start with the [national research matrix](reports/national-research-matrix.md); live counts are on the [research dashboard](DASHBOARD.md).
 
 > This repository does not claim that any government website is vulnerable.
 
 ## Research objectives
 
-1. Describe, with evidence, the security configuration that ten official government websites present to an ordinary visitor.
-2. Map observations to recognized risk categories (OWASP Top 10) while separating observed facts from theoretical risk.
-3. Report credible observations to Sri Lanka CERT and the owning institutions through official channels.
-4. Publish a method that others can repeat without touching anything they are not authorized to test.
+1. Document, from credible public sources, the cybersecurity incidents already on record for ten government institutions, keeping confirmed facts apart from allegations.
+2. Describe, with evidence, the security configuration those institutions' websites present to an ordinary visitor.
+3. Map observations to Sri Lanka CERT's website guideline and to recognized risk categories (OWASP Top 10) while separating observed facts from theoretical risk.
+4. Report credible observations to Sri Lanka CERT and the owning institutions through official channels.
+5. Publish a method that others can repeat without touching anything they are not authorized to test.
 
 ## Ethical research statement
 
@@ -23,7 +24,7 @@ An independent, passive-only study of the publicly observable security configura
 
 ## Scope and limitations
 
-Ten sites across eight public sectors are in scope, listed in [government-sites.md](research/government-sites.md) and [`data/website-inventory.csv`](data/website-inventory.csv). Only their public, unauthenticated pages are examined. Full rules are in [scope.md](research/scope.md).
+Ten institutions are in scope, listed in [government-sites.md](research/government-sites.md) and [`data/website-inventory.csv`](data/website-inventory.csv). Only their public, unauthenticated pages are examined. Full rules are in [scope.md](research/scope.md).
 
 A passive study shows configuration, not exploitability, and cannot assess the areas where most risk lies, such as access control and authentication. Read [research limitations](docs/research-limitations.md) before drawing any conclusion from this work.
 
@@ -41,25 +42,38 @@ research/
     government-sites.md           The ten sites and the verification standard
     assessment-checklist.md       Nine passive checks and their evidence standard
     technology-risk-reference.md  OWASP and AI-assisted code risk background
+    cert-compliance-mapping.md    Sri Lanka CERT website guideline: requirements and how far each can be checked
+    cert-web-application-guideline-mapping.md  Sri Lanka CERT web application guideline: all 32 requirements
+    ai-code-security-literature-review.md  Academic strand on AI-generated code
+    observations/                 Per-site observation plans (IRD so far)
 evidence/
     evidence-register.csv         One row per observation (currently empty)
     evidence-guidelines.md        Column rules, file naming, redaction, escalation
     sources/                      Saved screenshots and page copies
 reports/
-    executive-summary.md          Cross-site summary (after assessment)
-    individual-sites/             One report per site, plus the template
+    executive-summary.md          National-level summary
+    national-research-matrix.md   Generated: evidence, unknowns and status for all ten
+    historical-incident-timeline.md  Generated from data/historical-incidents.csv
+    individual-sites/             Per site: report, generated public-records summary, template
 disclosure/
     responsible-disclosure-policy.md
     templates/                    CERT report, institution notice, follow-up
 data/
     website-inventory.csv         Sites, verification status, research status
+    reserve-sites.csv             Sites moved out of the selection
+    historical-incidents.csv      One row per documented incident or report
     scorecard-template.csv        Checklist results sheet to copy per site
+    scorecards/                   One scorecard per site (IRD so far, blank)
 docs/
     research-limitations.md
     risk-classification.md
+    evidence-classification.md    The seven research labels
+    confidence-risk-matrix.md     Confidence rules and research priorities
+    reviews/                      Review reports on earlier work
 scripts/
     validate.py                   Checks structure, CSVs, IDs, links, safety guard
     build_dashboard.py            Regenerates DASHBOARD.md from the CSV files
+    build_reports.py              Regenerates the timeline, national matrix and public-records summaries
     new_site_reports.py           Creates missing site reports from the template
     repo_data.py                  Shared file paths and vocabularies
 DASHBOARD.md                      Generated progress overview
@@ -72,7 +86,7 @@ CONTRIBUTING.md
 | --- | --- | --- |
 | 0 | Research planning | Complete |
 | 1 | Research infrastructure and evidence collection | Infrastructure complete; collection not started |
-| 2 | Per-site assessment | Not started |
+| 2 | Evidence discovery and per-site assessment | Public-records discovery done for all ten; IRD observation plan prepared; website observation not started |
 | 3 | Cross-site analysis | Not started |
 | 4 | Responsible disclosure | Not started |
 
@@ -85,6 +99,7 @@ Python 3.9 or later, no extra packages.
 ```bash
 python3 scripts/validate.py          # check everything
 python3 scripts/build_dashboard.py   # regenerate DASHBOARD.md after editing a CSV
+python3 scripts/build_reports.py     # regenerate the timeline and public-records summaries
 python3 scripts/new_site_reports.py  # create report files for newly added sites
 ```
 
