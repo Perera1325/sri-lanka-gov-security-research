@@ -21,6 +21,17 @@ Incident counts come from [`data/historical-incidents.csv`](data/historical-inci
 
 "Verified" means both verification checks pass and dated copies of the sources are saved. See [government-sites.md](research/government-sites.md).
 
+## Research tracks
+
+| Track | Measure | Count |
+| --- | --- | --- |
+| A — passive observation | Sites with any passive result recorded | 0 / 10 |
+| B — authorized testing | Authorizations granted | 0 / 10 |
+| B — authorized testing | Authorization requests sent | 0 |
+| — | Confirmed current security weaknesses | 0 |
+
+Passive observation needs no authorization; active testing needs a `GRANTED` row in [`data/authorizations.csv`](data/authorizations.csv) first. No active testing has been authorized or performed. Confirmed current weaknesses stay at zero until the evidence register holds observed, re-checked results.
+
 ## Domain verification
 
 | Status | Sites |

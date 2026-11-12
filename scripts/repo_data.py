@@ -15,6 +15,8 @@ PLAN = ROOT / "research" / "research-plan.md"
 SELECTION = ROOT / "research" / "government-sites.md"
 RESERVE = ROOT / "data" / "reserve-sites.csv"
 INCIDENTS = ROOT / "data" / "historical-incidents.csv"
+AUTHORIZATIONS = ROOT / "data" / "authorizations.csv"
+SCORECARDS = ROOT / "data" / "scorecards"
 TIMELINE = ROOT / "reports" / "historical-incident-timeline.md"
 MATRIX = ROOT / "reports" / "national-research-matrix.md"
 REPORTS = ROOT / "reports" / "individual-sites"
@@ -60,6 +62,16 @@ INCIDENT_LABELS = [
 SYSTEMS = ["WEBSITE", "OTHER SYSTEM", "SOCIAL MEDIA", "SHARED INFRASTRUCTURE",
            "IMPERSONATION"]
 SHARED_SITE_ID = "NAT"
+
+AUTHORIZATION_COLUMNS = [
+    "institution_id", "institution", "domain", "authorization_status",
+    "request_sent_date", "authorization_reference", "scope_summary",
+    "valid_from", "valid_to", "notes",
+]
+# A GRANTED row is the only state that permits active testing of that system.
+AUTHORIZATION_STATUSES = [
+    "NONE REQUESTED", "REQUESTED", "GRANTED", "DECLINED", "EXPIRED",
+]
 
 VERIFICATION_STATUSES = ["VERIFIED", "PRELIMINARY", "PARTIAL", "UNVERIFIED"]
 RESEARCH_STATUSES = ["NOT STARTED", "IN PROGRESS", "ASSESSED", "REPORTED"]

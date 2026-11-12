@@ -39,6 +39,12 @@ REQUIRED_FILES = [
     "research/ai-code-security-literature-review.md",
     "reports/national-research-matrix.md",
     "reports/historical-incident-timeline.md",
+    "data/authorizations.csv",
+    "research/track-c-ai-owasp-mapping.md",
+    "lab/README.md", "lab/lab-setup.md",
+    "lab/vulnerability-analysis-TEMPLATE.md",
+    "authorization/README.md",
+    "authorization/authorization-request-TEMPLATE.md",
 ]
 
 # Modules that would let a script contact a website or run other programs.
@@ -362,6 +368,50 @@ def site_scorecards():
     return problems
 
 
+def authorizations():
+    """The authorization register gates all active testing. No row may claim a
+    granted authorization without a reference and a validity window."""
+    problems = []
+    header, rows = rd.read_csv(rd.AUTHORIZATIONS)
+    if header != rd.AUTHORIZATION_COLUMNS:
+        return [f"header must be {','.join(rd.AUTHORIZATION_COLUMNS)}"]
+    _, sites = rd.read_csv(rd.INVENTORY)
+    domain_by_id = {s["site_id"]: s["domain"] for s in sites}
+    ids = [r["institution_id"] for r in rows]
+    for value in sorted({v for v in ids if ids.count(v) > 1}):
+        problems.append(f"duplicate institution_id {value}")
+    for r in rows:
+        iid = r["institution_id"] or "(no id)"
+        if r["institution_id"] not in domain_by_id:
+            problems.append(f"{iid}: institution_id is not in the inventory")
+        elif r["domain"] != domain_by_id[r["institution_id"]]:
+            problems.append(f"{iid}: domain does not match the inventory")
+        if r["authorization_status"] not in rd.AUTHORIZATION_STATUSES:
+            problems.append(f"{iid}: unknown authorization_status")
+        if r["authorization_status"] == "GRANTED":
+            for column in ("authorization_reference", "valid_from", "valid_to"):
+                if not r[column].strip():
+                    problems.append(f"{iid}: a GRANTED authorization needs {column}")
+            for column in ("valid_from", "valid_to"):
+                if r[column] and not valid_date(r[column]):
+                    problems.append(f"{iid}: {column} must be YYYY-MM-DD")
+        if r["request_sent_date"] and not valid_date(r["request_sent_date"]):
+            problems.append(f"{iid}: request_sent_date must be YYYY-MM-DD")
+    return problems
+
+
+def every_site_has_a_scorecard():
+    """Track A: each inventory site has a passive-observation scorecard, even
+    when it is still blank."""
+    _, rows = rd.read_csv(rd.INVENTORY)
+    problems = []
+    for r in rows:
+        path = rd.SCORECARDS / f"{r['site_id']}-scorecard.csv"
+        if not path.is_file():
+            problems.append(f"no scorecard for {r['site_id']} ({r['domain']})")
+    return problems
+
+
 def markdown_links():
     problems = []
     pattern = re.compile(r"\[[^\]]*\]\(([^)\s]+)\)")
@@ -416,7 +466,9 @@ def main():
         ("Report file for every site", site_reports),
         ("Evidence register format, IDs and values", register),
         ("Scorecard template format", scorecard),
+        ("Every site has a passive-observation scorecard", every_site_has_a_scorecard),
         ("Site scorecards hold only evidenced results", site_scorecards),
+        ("Authorization register integrity", authorizations),
         ("Relative Markdown links resolve", markdown_links),
         ("Dashboard is current", dashboard_current),
         ("No network or scanning code", no_active_tooling),

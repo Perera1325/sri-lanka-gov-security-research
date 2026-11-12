@@ -45,6 +45,7 @@ research/
     cert-compliance-mapping.md    Sri Lanka CERT website guideline: requirements and how far each can be checked
     cert-web-application-guideline-mapping.md  Sri Lanka CERT web application guideline: all 32 requirements
     ai-code-security-literature-review.md  Academic strand on AI-generated code
+    track-c-ai-owasp-mapping.md   AI-code weakness classes mapped to OWASP (Track C)
     observations/                 Per-site observation plans (IRD so far)
 evidence/
     evidence-register.csv         One row per observation (currently empty)
@@ -63,7 +64,17 @@ data/
     reserve-sites.csv             Sites moved out of the selection
     historical-incidents.csv      One row per documented incident or report
     scorecard-template.csv        Checklist results sheet to copy per site
-    scorecards/                   One scorecard per site (IRD so far, blank)
+    scorecards/                   One blank scorecard per site (all ten; Track A)
+    authorizations.csv            Authorization status per institution (Track B gate)
+lab/                              Isolated local security lab (never aimed at .gov.lk)
+    README.md                     The isolation rule and what is here
+    lab-setup.md                  Building the offline environment
+    owasp-juice-shop.md / owasp-webgoat.md / portswigger-academy.md
+    vulnerability-analysis-TEMPLATE.md  One write-up per vulnerability class
+authorization/                    Track B: written-authorization framework
+    README.md                     The rule; nothing here sends email
+    authorization-request-TEMPLATE.md   Master request
+    requests/                     A pre-addressed request per institution
 docs/
     research-limitations.md
     risk-classification.md
@@ -87,7 +98,7 @@ CONTRIBUTING.md
 | 0 | Research planning | Complete |
 | 1 | Research infrastructure and evidence collection | Infrastructure complete; collection not started |
 | 2 | Evidence discovery and per-site assessment | Public-records discovery done for all ten; IRD observation plan prepared; website observation not started |
-| 3 | Cross-site analysis | Not started |
+| 3 | Technical security research: passive-observation templates (Track A), authorization framework (Track B), AI-code/OWASP mapping (Track C), isolated lab | Infrastructure complete; passive observation and any authorized testing not started |
 | 4 | Responsible disclosure | Not started |
 
 Counts of sites verified and assessed, and of observations, are generated from the data files on the [dashboard](DASHBOARD.md).

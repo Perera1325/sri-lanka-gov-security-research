@@ -1,0 +1,11 @@
+institution_id,institution,domain,authorization_status,request_sent_date,authorization_reference,scope_summary,valid_from,valid_to,notes
+MPS,Ministry of Public Security,pubsec.gov.lk,NONE REQUESTED,,,,,,No active testing authorized. Passive observation does not require authorization.
+DGP,Department of Government Printing,documents.gov.lk,NONE REQUESTED,,,,,,No active testing authorized. Passive observation does not require authorization.
+MPA,Ministry of Public Administration,pubad.gov.lk,NONE REQUESTED,,,,,,No active testing authorized. Passive observation does not require authorization.
+NMRA,National Medicines Regulatory Authority,nmra.gov.lk,NONE REQUESTED,,,,,,No active testing authorized. Passive observation does not require authorization.
+MOE,Ministry of Education,moe.gov.lk,NONE REQUESTED,,,,,,No active testing authorized. Passive observation does not require authorization.
+IRD,Inland Revenue Department,ird.gov.lk,NONE REQUESTED,,,,,,No active testing authorized. Passive observation does not require authorization.
+DIE,Department of Immigration and Emigration,immigration.gov.lk,NONE REQUESTED,,,,,,No active testing authorized. Passive observation does not require authorization.
+DMT,Department of Motor Traffic,dmt.gov.lk,NONE REQUESTED,,,,,,No active testing authorized. Passive observation does not require authorization.
+MODE,Ministry of Digital Economy,mode.gov.lk,NONE REQUESTED,,,,,,No active testing authorized. Passive observation does not require authorization.
+SLR,Sri Lanka Railways,railway.gov.lk,NONE REQUESTED,,,,,,No active testing authorized. Passive observation does not require authorization.

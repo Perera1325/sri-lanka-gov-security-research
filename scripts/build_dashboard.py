@@ -29,6 +29,17 @@ def render():
     by_severity = Counter(f["severity"] for f in findings)
     per_site = Counter(f["website"] for f in findings)
 
+    _, authz = rd.read_csv(rd.AUTHORIZATIONS)
+    authz_status = Counter(a["authorization_status"] for a in authz)
+    # A per-site scorecard counts as "observed" once it carries any result.
+    observed_sites = 0
+    for s in sites:
+        path = rd.SCORECARDS / f"{s['site_id']}-scorecard.csv"
+        if path.is_file():
+            _, checks = rd.read_csv(path)
+            if any(c["result"].strip() for c in checks):
+                observed_sites += 1
+
     plan_text = rd.PLAN.read_text(encoding="utf-8")
     open_plan_tasks = re.findall(r"^- \[ \] (.+)$", plan_text, flags=re.M)
 
@@ -66,6 +77,24 @@ def render():
     add("\"Verified\" means both verification checks pass and dated copies of "
         "the sources are saved. See "
         "[government-sites.md](research/government-sites.md).")
+    add("")
+    add("## Research tracks")
+    add("")
+    add("| Track | Measure | Count |")
+    add("| --- | --- | --- |")
+    add(f"| A — passive observation | Sites with any passive result recorded | {observed_sites} / {len(sites)} |")
+    add(f"| B — authorized testing | Authorizations granted | {authz_status['GRANTED']} / {len(authz)} |")
+    add(f"| B — authorized testing | Authorization requests sent | {authz_status['REQUESTED']} |")
+    weaknesses = sum(1 for f in findings
+                     if f["finding_status"] == "CONFIRMED OBSERVATION"
+                     and f["severity"] in ("Critical", "High", "Medium", "Low"))
+    add(f"| — | Confirmed current security weaknesses | {weaknesses} |")
+    add("")
+    add("Passive observation needs no authorization; active testing needs a "
+        "`GRANTED` row in [`data/authorizations.csv`](data/authorizations.csv) first. "
+        "No active testing has been authorized or performed. Confirmed current "
+        "weaknesses stay at zero until the evidence register holds observed, "
+        "re-checked results.")
     add("")
     add("## Domain verification")
     add("")
